@@ -1,0 +1,72 @@
+﻿<%@ Master
+    Language="C#" AutoEventWireup="true" CodeBehind="My.master.cs" Inherits="WhiteElephantWebsite.My" %>
+
+<%@ Register Src="~/ucCategoriesNavigation.ascx" TagPrefix="uc1" TagName="ucCategoriesNavigation" %>
+<%@ Register Src="~/ucProductSearch.ascx" TagPrefix="uc1" TagName="ucProductSearch" %>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="css/layout.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                <div id="header">
+                    <nav style="font-size: 1.3em">
+                        <asp:HyperLink ID="hypHome"  runat="server" NavigateUrl="~/Default.aspx">
+                            <asp:Image ID="logo" runat="server" CssClass="logo" ImageUrl="~/images/WhiteElephantLogo.png" />
+                        </asp:HyperLink>&nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; 
+                        <asp:HyperLink ID="hypHomeNav" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
+                        &nbsp;&nbsp; &nbsp;  &nbsp; 
+                        <asp:HyperLink ID="hypProductsNav" runat="server" NavigateUrl="~/Products.aspx">Products</asp:HyperLink>
+                        &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <asp:HyperLink ID="hypLogin" runat="server">Login</asp:HyperLink>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; 
+                        <asp:HyperLink ID="hypCart" runat="server" NavigateUrl="~/Cart.aspx">
+                            <asp:Image ID="cart" runat="server" ImageUrl="~/images/shoppingCart.png" Style="vertical-align: middle;" />
+                        </asp:HyperLink>
+                        <asp:Label ID="lblCartItemsCount" runat="server" Text="" Style="vertical-align: middle;"></asp:Label>
+                    </nav>
+                    <hr />
+                    <asp:Label ID="lblMasterMessage" runat="server" EnableViewState="False" SkinID="msgLabel"></asp:Label>
+                </div>
+            </asp:ContentPlaceHolder>
+            <div class="flexcontainer" id="main">
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <div id="col1">
+                        <uc1:ucCategoriesNavigation runat="server" ID="ucCategoriesNavigation" />
+                    </div>
+                </asp:ContentPlaceHolder>
+
+                <div id="col2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div id="col3">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                        <uc1:ucProductSearch runat="server" ID="ucProductSearch" />
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div id="footer">
+                <hr />
+                <!--label for the date -->
+                <br />
+                Copyright &copy;
+                <asp:Label ID="lblCopyRightYear" runat="server" Text=""></asp:Label>
+                White Elephant Incorporated
+        <br />
+                <!--eventually a link to admin login page will appear here -->
+            </div>
+        </div>
+    </form>
+</body>
+</html>

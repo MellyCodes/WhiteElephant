@@ -1,0 +1,163 @@
+﻿body {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: medium;
+    line-height: 110%;
+    color: black;
+    
+}
+
+#wrapper {
+    width: 100%;
+    margin:  auto;
+}
+
+.dsable {
+    background-color: silver;
+}
+
+.enable {
+    background-color: white;
+}
+
+#header {
+    width: 99%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+#confirmForm {
+    width: 99%;
+    margin: 1% auto;
+}
+
+#billing, #shipping {
+    width: 43%;
+    padding: 1%;
+    float: left;
+    margin-right: 3%;
+    border: thin solid black;
+}
+
+#logincol1 {
+    width: 80%;
+    margin: 5% auto;
+    float: left;
+}
+
+textarea {
+    width: 40%;
+    display: block;
+}
+
+.btn {
+    margin: 0 auto;
+    width: 100px;
+    background-color:coral
+}
+
+#col1 {
+    width: 20%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 1%;
+}
+
+#col2 {
+    width: 50%;
+    float: left;
+    margin-right: 1%;
+}
+
+#full {
+    width: 95%;
+    margin: 1% auto;
+}
+
+#main {
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 1%;
+}
+
+#footer {
+    clear: both;
+    text-align: center;
+}
+
+.pImage {
+    float: left;
+    margin-right: 10px;
+}
+
+.pImageR {
+    float: right;
+    margin-left: 10px;
+}
+
+#lblMasterMessage {
+    color: #7BBF6A;
+    font-weight: bold;
+}
+
+.ProductDetails {
+    clear: both;
+    padding: 1%;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+a:visited {
+    color: dimgrey;
+}
+a:hover {
+    color: coral;
+    text-decoration: line-through;
+}
+
+a img {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: Coral;
+    margin-top: 3px;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: Coral;
+}
+
+h3 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: Coral;
+}
+
+
+
+h4 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: Coral;
+}
+
+h5 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: Coral;
+}
+
+h6 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: coral;
+}

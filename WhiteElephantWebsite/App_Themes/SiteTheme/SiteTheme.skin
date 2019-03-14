@@ -1,0 +1,217 @@
+﻿
+<asp:Label   runat="server"         
+             Font-Size="0.9em"      Font-Names="Verdana" />
+
+<asp:Label  runat="server" SkinId="msgLabel" Font-Bold="True" Font-Size="Medium" ></asp:Label>
+   
+
+<asp:DropDownList 
+             runat="server"         ForeColor="#585880" 
+             Font-Names="Verdana" />
+
+<asp:TextBox runat="server"         BackColor="#FFFFFF" 
+             BorderStyle="Solid"    Font-Names="Verdana"   
+             ForeColor="black"    BorderColor="black"  
+             BorderWidth="1pt" />
+
+<asp:Button  runat="server"         BorderColor="black" 
+             Font-Bold="true"       BorderWidth="1pt" 
+             ForeColor="coral"    BackColor="#ffffff" />
+
+<asp:LinkButton runat="server"      Font-Names="Verdana"/>
+
+<asp:RadioButtonList runat="server" BorderColor="black" BorderWidth="1pt" ForeColor="white" Font-Names="Verdana" CellPadding="5" />
+<asp:RadioButton runat="server" BorderColor="transparent" BackColor="transparent" ForeColor="#585880" Font-Size="0.9em" Font-Names="Verdana" />
+<asp:Hyperlink  runat="server"      Font-Names="Verdana"/>
+
+<asp:ListBox runat="server" ForeColor="#585880" BackColor="#F8F7F4"  Font-Names="Verdana"  />
+
+<asp:BulletedList Font-Names="Verdana" BulletImageURL="images/0186_glassybullet.png" BulletStyle="CustomImage" runat="server" BackColor="transparent" ForeColor="#585880"></asp:BulletedList>
+
+<asp:CheckBox runat="server" BorderColor="#FFFFFF" BackColor="transparent" ForeColor="#585880" Font-Names="Verdana" />
+
+<asp:Calendar runat="server" 
+    BorderStyle="double" 
+    BorderColor="#E7E5DB" 
+    BorderWidth="2" 
+    BackColor="#F8F7F4" 
+    Font-Names="Verdana"
+    Font-Size="9pt">
+    <TodayDayStyle      BackColor="#F8F7F4"     BorderWidth="1" BorderColor="#585880" ForeColor="#585880" />
+    <OtherMonthDayStyle BackColor="transparent" ForeColor="#CCCCCC" />
+    <SelectedDayStyle   ForeColor="#6464FE"     BackColor="transparent" cssclass="theme_highlighted" />
+    <TitleStyle         Font-Bold="True"        BackColor="#CCCCCC" ForeColor="#585880" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header" />
+    <NextPrevStyle      Font-Bold="True"        ForeColor="#585880" BorderColor="transparent"  BackColor="transparent" />
+    <DayStyle                                   ForeColor="#000000"   BorderColor="transparent" BackColor="transparent" />
+    <SelectorStyle      Font-Bold="True"        ForeColor="#696969" BackColor="#F8F7F4" />
+    <WeekendDayStyle    Font-Bold="False"       ForeColor="#000000"   BackColor="transparent" />
+    <DayHeaderStyle     Font-Bold="True"        ForeColor="#585880" BackColor="Transparent" />
+</asp:Calendar>
+
+<asp:WebPartZone runat="server"  PartFrameType="TitleAndBorder"  DragHighlightColor="#6464FE"  ShowTitleIcons="True" BorderStyle="double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F8FC" cssclass="theme_fadeblue" Font-Names="Verdana">
+    <PartStyle     ForeColor="#585880" BorderStyle="double" BorderColor="#585880" BorderWidth="1pt" BackColor="#FFFFFF"></PartStyle>
+    <FooterStyle          ForeColor="#585880" BackColor="#CCCCCC"></FooterStyle>
+    <HelpVerb      ImageURL="images/SmokeAndGlass_help.gif"     checked="False" enabled="True"   visible="True"></HelpVerb>
+    <CloseVerb     ImageURL="images/SmokeAndGlass_close.gif"    checked="False" enabled="True"   visible="True"></CloseVerb>
+    <RestoreVerb   ImageURL="images/SmokeAndGlass_restore.gif"  checked="False" enabled="True"   visible="True"></RestoreVerb>
+    <MinimizeVerb  ImageURL="images/SmokeAndGlass_minimize.gif" checked="False" enabled="True"   visible="True"></MinimizeVerb>
+    <EditVerb      ImageURL="images/SmokeAndGlass_edit.gif"     checked="False" enabled="True"  visible="True"></EditVerb>
+    <HeaderStyle           ForeColor="#FFFFFF" Font-Names="Verdana" BorderStyle="double" BorderWidth="0" Font-Bold="true"  BorderColor="#E7E5DB"  BackColor="#232377"></HeaderStyle>
+    <PartChromeStyle            ForeColor="#585880" Font-Names="Verdana" BorderColor="#44448A" BackColor="#F8F7F4"></PartChromeStyle>
+    <PartTitleStyle       ForeColor="#585880" Font-Names="Verdana" BorderStyle="solid" Font-Bold="true" BorderWidth="1pt" BorderColor="#494979" BackColor="#F8F7F4" cssclass="theme_header"></PartTitleStyle>
+    <VerbStyle        ForeColor="#FFFFFF" Font-Names="Verdana" Font-Underline="False" Font-Size=".7em" BorderColor="#000066" BorderWidth="1pt" BackColor="#8383B6"></VerbStyle>
+    <SelectedPartChromeStyle BorderColor="#6464FE" Font-Names="Verdana"/>
+</asp:WebPartZone>
+
+<asp:CatalogZone runat="server"  PartFrameType="TitleAndBorder"  DragHighlightColor="#6464FE"  ShowTitleIcons="True" BorderStyle="double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <PartChromeStyle      ForeColor="#585880" Font-Bold="true"  BorderColor="#000066" BackColor="#E7E5DB"></PartChromeStyle>
+    <PartTitleStyle ForeColor="#585880" BorderColor="#000066" BackColor="#E7E5DB" cssclass="theme_header"></PartTitleStyle>
+    <HeaderStyle     ForeColor="#585880" Font-Bold="true"  BorderStyle="double" BorderWidth="1pt" BorderColor="#E7E5DB"  cssclass="theme_header"></HeaderStyle>
+    <FooterStyle    ForeColor="#585880" BackColor="#E7E5DB"></FooterStyle>
+    <PartStyle ForeColor="#585880" BorderStyle="double" BorderColor="#585880" BorderWidth="1pt" BackColor="#FFFFFF"></PartStyle>
+    <VerbStyle    ForeColor="#585880" BorderColor="#000066" BorderWidth="1" BackColor="#F8F7F4"/>
+</asp:CatalogZone>
+
+<asp:EditorZone runat="server"  PartFrameType="TitleAndBorder"  DragHighlightColor="Blue"  ShowTitleIcons="True" BorderStyle="double"  BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <PartChromeStyle      ForeColor="#585880" BorderColor="#000066" BackColor="transparent"></PartChromeStyle>
+    <PartTitleStyle ForeColor="#585880" Font-Bold="true"  BorderColor="#000066" BackColor="transparent" cssclass="theme_header"></PartTitleStyle>
+    <PartStyle ForeColor="#585880" BorderStyle="double" BorderColor="#585880" BorderWidth="1pt" BackColor="#FFFFFF"></PartStyle>
+    <HeaderStyle ForeColor="#585880" Font-Bold="true"  BorderStyle="double" BorderWidth="1pt" BorderColor="#E7E5DB"  cssclass="theme_header"></HeaderStyle>
+    <FooterStyle BackColor="#E7E5DB"></FooterStyle>
+</asp:EditorZone>
+
+
+<asp:DetailsView runat="server" BorderStyle="Double" ForeColor="#585880" BorderColor="#E7E5DB" BorderWidth="2pt" Font-Names="Verdana" CellPadding="5" BackColor="#FFFFFF">
+    <EmptyDataRowStyle   Font-Names="Verdana" ForeColor="#585880"  BackColor="#F8F7F4"></EmptyDataRowStyle>
+    <FieldHeaderStyle    Font-Names="Verdana" BorderWidth="1pt"    ForeColor="#585880" BorderStyle="Solid" BorderColor="#FFFFFF" BackColor="#E7E5DB"></FieldHeaderStyle>
+    <PagerStyle          Font-Names="Verdana" ForeColor="#585880"  BorderWidth="1pt" BorderColor="#585880" BorderStyle="Solid" BackColor="#F8F7F4"></PagerStyle>
+    <EditRowStyle        Font-Names="Verdana" ForeColor="#585880" BackColor="#F8F7F4"></EditRowStyle>
+    <RowStyle            Font-Names="Verdana" ForeColor="#585880" BorderColor="#FFFFFF" BackColor="#FFFFFF"></RowStyle>
+    <CommandRowStyle     Font-Names="Verdana" ForeColor="#585880" BorderWidth="1pt" BorderStyle="Ridge" BorderColor="#FFFFFF" cssclass="theme_header"></CommandRowStyle>
+    <InsertRowStyle      Font-Names="Verdana" BackColor="#F8F7F4" ForeColor="#585880"></InsertRowStyle>
+    <AlternatingRowStyle Font-Names="Verdana" ForeColor="#585880" BackColor="#F8F7F4"></AlternatingRowStyle>
+</asp:DetailsView>
+
+
+<asp:FormView runat="server" BorderStyle="Double" ForeColor="#585880" BorderColor="#E7E5DB" BorderWidth="2pt" Font-Names="Verdana" CellPadding="5" BackColor="#FFFFFF">
+    <EmptyDataRowStyle        Font-Names="Verdana" ForeColor="#585880"  BackColor="#F8F7F4"></EmptyDataRowStyle>
+    <PagerStyle          Font-Names="Verdana" ForeColor="#585880"  BorderWidth="1pt" BorderColor="#585880" BorderStyle="Solid" BackColor="#F8F7F4"></PagerStyle>
+    <EditRowStyle        Font-Names="Verdana" ForeColor="#585880" BackColor="#F8F7F4"></EditRowStyle>
+    <RowStyle            Font-Names="Verdana" ForeColor="#585880" BorderColor="#FFFFFF" BackColor="#FFFFFF"></RowStyle>
+    <InsertRowStyle      Font-Names="Verdana" BackColor="#F8F7F4" ForeColor="#585880"></InsertRowStyle>
+</asp:FormView>
+
+
+<asp:GridView runat="server" ForeColor="#585880"  BorderStyle="Double" BorderColor="#E7E5DB" BorderWidth="2pt" Font-Names="Verdana" CellPadding="5" GridLines="None">
+    <AlternatingRowStyle Font-Bold="False" ForeColor="#585880" BackColor="#F8F7F4"></AlternatingRowStyle>
+    <FooterStyle       Font-Bold="False" ForeColor="#585880" cssclass="theme_header"></FooterStyle>
+    <EditRowStyle      ForeColor="#585880" Font-Bold="True" BorderWidth="1pt" BorderStyle="Solid" cssclass="theme_highlighted"></EditRowStyle>
+    <HeaderStyle       Font-Bold="False" ForeColor="#585880" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header"></HeaderStyle>
+    <RowStyle          Font-Bold="False" ForeColor="#585880" BackColor="#FFFFFF"></RowStyle>
+    <PagerStyle        Font-Bold="False" ForeColor="#585880" BackColor="#E7E5DB"></PagerStyle>
+    <SelectedRowStyle  Font-Bold="False" ForeColor="#585880" BorderStyle="solid"  BorderWidth="2pt" BorderColor="585880" cssclass="theme_highlighted"></SelectedRowStyle>
+</asp:GridView>
+
+
+<asp:TreeView runat="server" BorderColor="#FFFFFF" BackColor="#FFFFFF" ForeColor="#585880" Font-Names="Verdana" LeafNodeImageURL="images\smokeandglass_iconlevel.gif" RootNodeImageURL="images\smokeandglass_iconmain.gif" ParentNodeImageURL="images\smokeandglass_iconmain.gif" NodeIndent="30" CollapseImageURL="images\smokeandglass_minus.gif" ExpandImageURL="images\smokeandglass_plus.gif">
+    <NodeStyle BorderColor="#FFFFFF" BackColor="#FFFFFF" Font-Names="Verdana" horizontalpadding="5" ForeColor="#585880" verticalpadding="1"></NodeStyle>
+    <RootNodeStyle Font-Names="Verdana" BorderColor="#FFFFFF" BackColor="#FFFFFF" Font-Bold="True"></RootNodeStyle>
+    <HoverNodeStyle Font-Names="Verdana" BorderColor="#FFFFFF" BackColor="#FFFFFF" font-underline="True" ForeColor="#4F4FCB"></HoverNodeStyle>
+    <SelectedNodeStyle BorderColor="transparent" BackColor="transparent" ForeColor="#585880" ></SelectedNodeStyle>
+   <LevelStyles>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+         <asp:TreeNodeStyle  BorderColor="#FFFFFF" Font-Names="Verdana" Font-Bold="True" BackColor="#FFFFFF" ForeColor="#000066"></asp:TreeNodeStyle>
+    </LevelStyles>
+</asp:TreeView>
+
+<asp:CheckBoxList runat="server"      BorderStyle="Solid" BorderColor="#E7E5DB" BorderWidth="1pt" ForeColor="#585880" Font-Names="Verdana" CellPadding="5" CellSpacing="1" />
+
+<asp:Login runat="server" BorderStyle="Double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <LoginButtonStyle    Font-Names="Verdana" ForeColor="#585880" BorderColor="#585880" BorderWidth="1pt" BackColor="#E7E5DB"></LoginButtonStyle>
+    <HyperLinkStyle        Font-Names="Verdana" font-underline="true" ForeColor="#585880" BackColor="transparent"></HyperLinkStyle>
+    <CheckBoxStyle         ForeColor="#000000" BorderColor="transparent" BackColor="transparent"></CheckBoxStyle>
+    <InstructionTextStyle  Font-Names="Verdana" ForeColor="#585880" font-italic="True" BackColor="transparent"></InstructionTextStyle>
+    <FailureTextStyle      Font-Names="Verdana" ForeColor="#585880"  BackColor="transparent" Font-Bold="True"></FailureTextStyle>
+    <TextBoxStyle          Font-Names="Verdana" ForeColor="#585880" BorderWidth="1pt" BorderColor="transparent" BackColor="#FFFFFF"></TextBoxStyle>
+    <TitleTextStyle        Font-Names="Verdana" Font-Bold="True" ForeColor="#585880" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header"></TitleTextStyle>
+    <LabelStyle            ForeColor="#000000" BackColor="transparent" Font-Names="Verdana"></LabelStyle>
+</asp:Login>
+
+<asp:CreateUserWizard runat="server" BorderStyle="Double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <HyperLinkStyle        Font-Names="Verdana" font-underline="true" ForeColor="#585880" BackColor="transparent"></HyperLinkStyle>
+    <InstructionTextStyle  Font-Names="Verdana" ForeColor="#585880" font-italic="True" BackColor="transparent"></InstructionTextStyle>
+    <ErrorMessageStyle      Font-Names="Verdana" ForeColor="#585880"  BackColor="transparent" Font-Bold="True"></ErrorMessageStyle>
+    <TextBoxStyle          Font-Names="Verdana" ForeColor="#585880" BorderWidth="1pt" BorderColor="transparent" BackColor="#FFFFFF"></TextBoxStyle>
+    <TitleTextStyle        Font-Names="Verdana" Font-Bold="True" ForeColor="#585880" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header"></TitleTextStyle>
+    <LabelStyle            ForeColor="#000000" BackColor="transparent" Font-Names="Verdana"></LabelStyle>
+</asp:CreateUserWizard>
+
+<asp:ChangePassword runat="server" BorderStyle="Double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <HyperLinkStyle        Font-Names="Verdana" font-underline="true" ForeColor="#585880" BackColor="transparent"></HyperLinkStyle>
+    <InstructionTextStyle  Font-Names="Verdana" ForeColor="#585880" font-italic="True" BackColor="transparent"></InstructionTextStyle>
+    <FailureTextStyle      Font-Names="Verdana" ForeColor="#585880"  BackColor="transparent" Font-Bold="True"></FailureTextStyle>
+    <TextBoxStyle          Font-Names="Verdana" ForeColor="#585880" BorderWidth="1pt" BorderColor="transparent" BackColor="#FFFFFF"></TextBoxStyle>
+    <TitleTextStyle        Font-Names="Verdana" Font-Bold="True" ForeColor="#585880" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header"></TitleTextStyle>
+    <LabelStyle            ForeColor="#000000" BackColor="transparent" Font-Names="Verdana"></LabelStyle>
+</asp:ChangePassword>
+
+<asp:LoginName   runat="server" ForeColor="#585880" Font-Names="Verdana" Font-Bold="True" />
+
+<asp:LoginStatus runat="server" ForeColor="#585880" Font-Names="Verdana" Font-Bold="True" />
+
+<asp:PasswordRecovery runat="server" BorderStyle="Double" BorderColor="#E7E5DB" BorderWidth="2pt" BackColor="#F8F7F4" Font-Names="Verdana">
+    <SubmitButtonStyle     Font-Names="Verdana" ForeColor="#585880" BorderColor="#585880" BorderWidth="1pt" BackColor="#E7E5DB"></SubmitButtonStyle>
+    <HyperLinkStyle        Font-Names="Verdana" ForeColor="#585880" BackColor="transparent"></HyperLinkStyle>
+    <FailureTextStyle      Font-Bold="True" ForeColor="#585880" BackColor="#F8F7F4" Font-Names="Verdana"></FailureTextStyle>
+    <SuccessTextStyle      ForeColor="#585880" BackColor="#F8F7F4" Font-Names="Verdana"></SuccessTextStyle>
+    <TitleTextStyle        ForeColor="#585880" Font-Bold="True" BorderColor="#CCCCCC" BorderWidth="1pt" cssclass="theme_header" Font-Names="Verdana"></TitleTextStyle>
+    <InstructionTextStyle  ForeColor="#585880" BackColor="transparent" font-italic="True" Font-Names="Verdana"></InstructionTextStyle>
+    <TextBoxStyle          ForeColor="#585880" BackColor="#FFFFFF"  BorderWidth="1" BorderColor="transparent"></TextBoxStyle>
+    <LabelStyle            ForeColor="#000000" BackColor="transparent" Font-Names="Verdana"></LabelStyle>
+</asp:PasswordRecovery>
+
+<asp:DataGrid runat="server"  ForeColor="#585880" CellPadding="5" GridLines="None" BorderWidth="2pt" BorderStyle="Double" BorderColor="#E7E5DB" Font-Names="Verdana">
+    <AlternatingItemStyle     ForeColor="#585880" BackColor="#F8F7F4"></AlternatingItemStyle>
+    <EditItemStyle            ForeColor="#585880" cssclass="theme_highlighted"></EditItemStyle>
+    <FooterStyle              ForeColor="#585880" cssclass="theme_header"></FooterStyle>
+    <HeaderStyle              ForeColor="black" cssclass="theme_header"></HeaderStyle>
+    <ItemStyle                ForeColor="#585880" BackColor="#FFFFFF"></ItemStyle>
+    <PagerStyle               ForeColor="#585880" BackColor="#E7E5DB"></PagerStyle>
+    <SelectedItemStyle        ForeColor="#585880" BackColor="#FFFFFF" cssclass="theme_highlighted"></SelectedItemStyle>
+</asp:DataGrid>
+
+<asp:RangeValidator runat="server" ErrorMessage="RangeValidator" Font-Names="Verdana"></asp:RangeValidator>
+
+<asp:RequiredFieldValidator runat="server" Font-Names="Verdana"></asp:RequiredFieldValidator>
+
+<asp:RegularExpressionValidator runat="server" Font-Names="Verdana"></asp:RegularExpressionValidator>
+
+<asp:CompareValidator runat="server" Font-Names="Verdana"></asp:CompareValidator>
+
+<asp:CustomValidator runat="server" Font-Names="Verdana"></asp:CustomValidator>
+
+<asp:ValidationSummary runat="server" Font-Names="Verdana" />
+
+<asp:SiteMapPath runat="server" Font-Names="Verdana" Font-Bold="true" ForeColor="#585880" BackColor="#FFFFFF" BorderColor="#F8F7F4">
+     <CurrentNodeStyle    ForeColor="#6464FE" Font-Bold="true" font-underline="false" BorderColor="#FFFFFF" BackColor="#FFFFFF"  Font-Names="Verdana" ></CurrentNodeStyle>
+     <PathSeparatorStyle  ForeColor="#000000" Font-Bold="true" BorderColor="#FFFFFF" BackColor="#FFFFFF"  Font-Names="Verdana" ></PathSeparatorStyle>
+     <RootNodeStyle       ForeColor="#585880" Font-Bold="true" font-underline="true" BorderColor="#FFFFFF" BackColor="#FFFFFF"  Font-Names="Verdana" ></RootNodeStyle>
+     <NodeStyle           ForeColor="#585880" Font-Bold="true" font-underline="true"  BorderColor="#FFFFFF" BackColor="#FFFFFF"  Font-Names="Verdana" ></NodeStyle>
+</asp:SiteMapPath>
+
+<asp:Wizard runat="server" BorderStyle="Double" BorderColor="#585880" Font-Names="Verdana" Font-Weight="Bold" ForeColor="#585880" BackColor="#F8F7F4">
+    <HeaderStyle           ForeColor="#585880" BackColor="#F8F7F4" Font-Bold="true" BorderColor="#CCCCCC" BorderWidth="1" cssclass="theme_header"></HeaderStyle>
+    <SidebarStyle          ForeColor="#585880" cssclass="theme_fadeblue"/>
+    <SideBarButtonStyle    ForeColor="#000066" BackColor="transparent" BorderColor="#000066"  />
+    <StepStyle             ForeColor="#585880" BackColor="#FFFFFF" BorderColor="#585880" BorderWidth="1pt" />
+    <NavigationStyle       ForeColor="#585880" BackColor="#F8F7F4" BorderColor="#585880" />
+    <NavigationButtonStyle ForeColor="#585880" BackColor="#F8F7F4" BorderColor="#585880" />
+</asp:Wizard>

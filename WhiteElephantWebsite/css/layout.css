@@ -1,0 +1,39 @@
+﻿.flexcontainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-cols {
+    padding: 10px;
+}
+
+#col3 {
+    text-align: left;
+    padding-left:2em;
+}
+
+.logo {
+    display: flex;
+}
+
+
+.large {
+    font-size: 2.0em !important;
+    font-weight: bolder;
+    color:coral;
+}
+
+.title-border {
+    color: black;
+    border: 2px solid black;
+    background-color: coral;
+    width: 47em;
+}
+
+.red {
+    color: red !important;
+}
+
+.crs {
+    cursor: pointer;
+}
