@@ -11,6 +11,7 @@ namespace WhiteElephantWebsite
 {
     public partial class ucProducts : System.Web.UI.UserControl
     {
+
         public bool Featured { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace WhiteElephantWebsite
                     {
                         List<SqlParameter> prms = new List<SqlParameter>();
                         prms.Add(CategoryParamHelper(category));
-                        this.lblHeading.Text = $"{DBHelper.GetQueryValue<string>("SelectCategories", "name", prms.ToArray())}";
+                        this.lblHeading.Text = $"Products in Category: {DBHelper.GetQueryValue<string>("SelectCategories", "name", prms.ToArray())}";
 
                         LoadProductsByCategory(category);
                     }
@@ -43,11 +44,10 @@ namespace WhiteElephantWebsite
                         this.lblHeading.Text = "No such category";
                     }
                 }
-                else if (Request.QueryString["word1"] != null) // Doing search
+                else if (Request.QueryString["word1"] != null)
                 {
                     ProductSearch();
                 }
-                //Add Product Search
                 else if (!string.IsNullOrEmpty(id))
                 {
                     int productId = 0;
@@ -80,11 +80,27 @@ namespace WhiteElephantWebsite
         private void ProductSearch()
         {
             List<string> searchKeys = Request.QueryString.AllKeys.Where(q => q.Contains("word")).ToList();
+            bool all = Request.QueryString["all"] != null ? Request.QueryString["all"].ToString().ToLower() == "true" : false;
 
-            bool all = Request.QueryString["all"] != null ? Request.QueryString["all"].ToString().ToLower() == "true" :
-                false;
+            List<SqlParameter> prms = new List<SqlParameter>();
 
+            prms.Add(new SqlParameter() { ParameterName = "@MatchAllWords", SqlDbType = SqlDbType.Bit, Value = all });
 
+            searchKeys.ForEach(w =>
+            {
+                prms.Add(new SqlParameter()
+                {
+                    ParameterName = $"@Key{w}",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 50
+                    ,
+                    Value = Request.QueryString[w]
+                });
+            });
+
+            this.lblHeading.Text = "Product search results";
+
+            DBHelper.DataBinding(this.rptProducts, "SearchProducts", prms.ToArray());
         }
 
         private void ProductCountMessage()
