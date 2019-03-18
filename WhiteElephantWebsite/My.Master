@@ -63,6 +63,8 @@
                 Copyright &copy;
                 <asp:Label ID="lblCopyRightYear" runat="server" Text=""></asp:Label>
                 White Elephant Incorporated
+                <br />
+                <asp:HyperLink ID="hypAdminLogin" runat="server" NavigateUrl="~/admin/Login.aspx">Admin Login</asp:HyperLink>
         <br />
                 <!--eventually a link to admin login page will appear here -->
             </div>
