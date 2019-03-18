@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="AccountCreation.aspx" />
     <Content Include="admin\AdminDashboard.aspx" />
+    <Content Include="admin\Images.aspx" />
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\ProductMaintenance.aspx" />
     <Content Include="App_Themes\SiteTheme\SiteTheme.css" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="admin\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Images.aspx.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Images.aspx.designer.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
