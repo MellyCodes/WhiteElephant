@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/My.Master" AutoEventWireup="true" CodeBehind="ProductMaintenance.aspx.cs" Inherits="WhiteElephantWebsite.admin.ProductMaintenance" %>
+<%@ Register TagPrefix="uc1" TagName="ucAdminNav" Src="~/ucAdminNav.ascx" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder5" runat="server">
+    <uc1:ucAdminNav runat="server" ID="ucAdminNav" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
