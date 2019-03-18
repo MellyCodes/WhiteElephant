@@ -71,6 +71,7 @@
     <Content Include="AccountCreation.aspx" />
     <Content Include="admin\AdminDashboard.aspx" />
     <Content Include="admin\Login.aspx" />
+    <Content Include="admin\ProductMaintenance.aspx" />
     <Content Include="App_Themes\SiteTheme\SiteTheme.css" />
     <Content Include="Cart.aspx" />
     <Content Include="Checkout.aspx" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ProductMaintenance.aspx.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ProductMaintenance.aspx.designer.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="ucAdminNav.ascx.cs">
       <DependentUpon>ucAdminNav.ascx</DependentUpon>
