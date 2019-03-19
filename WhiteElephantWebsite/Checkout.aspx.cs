@@ -13,7 +13,19 @@ using System.Web.UI.WebControls;
 namespace WhiteElephantWebsite
 {
     public partial class Checkout : System.Web.UI.Page
+
     {
+
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            DateTime dteMin = DateTime.Today;
+            DateTime dteMax = new DateTime(2050, 1, 1);
+
+            rngMydate.MinimumValue = dteMin.ToShortDateString();
+            rngMydate.MaximumValue = dteMax.ToShortDateString();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,6 +33,8 @@ namespace WhiteElephantWebsite
                 if (!Common.IsUserAuthenticated(Session))
                 {
                     notLoggedIn.Visible = true;
+                    shippingAddress.Visible = false;
+                    creditCardInfo.Visible = false;
                     shippingCheckbox.Visible = false;
                     btnSubmitOrder.Visible = false;
                     lblTotal.Visible = false;
@@ -29,6 +43,7 @@ namespace WhiteElephantWebsite
                 }
                 else
                 {
+                    creditCardInfo.Visible = true;
                     shippingCheckbox.Visible = true;
                     notLoggedIn.Visible = false;
                     btnSubmitOrder.Visible = true;
@@ -66,40 +81,41 @@ namespace WhiteElephantWebsite
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
         {
             lblError.Text = "";
-
-            try
+            if (IsValid)
             {
+                try
+                {
 
-                int orderNumber = SubmitOrder();
-                SendEmail(orderNumber);
+                    int orderNumber = SubmitOrder();
+                    SendEmail(orderNumber);
 
-                lblMessage.Text = $"Your order has now been processed.<br />Order No: { orderNumber.ToString() }<br />An email has been sent as confirmation.";
+                    lblMessage.Text = $"Your order has now been processed.<br />Order No: { orderNumber.ToString() }<br />An email has been sent as confirmation.";
 
-                //Remove the cart cookies from the user's system
-                Response.Cookies["CartUId"].Expires = DateTime.Now.AddDays(-1);
+                    //Remove the cart cookies from the user's system
+                    Response.Cookies["CartUId"].Expires = DateTime.Now.AddDays(-1);
 
-                //Clear MasterPage Label
-                Label lblCartItemsCount = (Label)this.Page.Master.FindControl("lblCartItemsCount");
+                    //Clear MasterPage Label
+                    Label lblCartItemsCount = (Label)this.Page.Master.FindControl("lblCartItemsCount");
 
-                if (lblCartItemsCount != null)
-                    lblCartItemsCount.Text = "";
+                    if (lblCartItemsCount != null)
+                        lblCartItemsCount.Text = "";
 
-                this.lblTotal.Text = "";
+                    this.lblTotal.Text = "";
 
-                this.grdCart.DataSource = null;
-                this.grdCart.DataBind();
+                    this.grdCart.DataSource = null;
+                    this.grdCart.DataBind();
 
-                this.btnSubmitOrder.Visible = false;
-                this.btnUpdateMyCart.Visible = false;
+                    this.btnSubmitOrder.Visible = false;
+                    this.btnUpdateMyCart.Visible = false;
 
-                String shippingStreet = this.txtShippingStreet.Text.Trim();
-                String shippingCity = this.txtShippingCity.Text.Trim();
-                String shippingProvince = this.txtShippingProvince.Text.Trim();
-                String shippingPostalCode = this.txtShippingPostalCode.Text.Trim();
+                    String shippingStreet = this.txtShippingStreet.Text.Trim();
+                    String shippingCity = this.txtShippingCity.Text.Trim();
+                    String shippingProvince = this.txtShippingProvince.Text.Trim();
+                    String shippingPostalCode = this.txtShippingPostalCode.Text.Trim();
 
-                string authUser = Common.GetAuthenticatedUser(Session);
+                    string authUser = Common.GetAuthenticatedUser(Session);
 
-                int customerId = DBHelper.GetQueryValue<int>("SelectCustomers", "id", new SqlParameter[]{ new SqlParameter() {
+                    int customerId = DBHelper.GetQueryValue<int>("SelectCustomers", "id", new SqlParameter[]{ new SqlParameter() {
                     ParameterName = "@EmailAddress",
                     SqlDbType = SqlDbType.NVarChar,
                     Size = 50,
@@ -107,21 +123,22 @@ namespace WhiteElephantWebsite
                 }});
 
 
-                List<SqlParameter> prms = new List<SqlParameter>();
+                    List<SqlParameter> prms = new List<SqlParameter>();
 
-                prms.Add(new SqlParameter() { ParameterName = "@CustomerId", SqlDbType = SqlDbType.Int, Value = customerId });
+                    prms.Add(new SqlParameter() { ParameterName = "@CustomerId", SqlDbType = SqlDbType.Int, Value = customerId });
 
-                prms.Add(new SqlParameter() { ParameterName = "@ShippingStreet", SqlDbType = SqlDbType.NVarChar, Value = shippingStreet });
-                prms.Add(new SqlParameter() { ParameterName = "@ShippingCity", SqlDbType = SqlDbType.NVarChar, Value = shippingCity });
-                prms.Add(new SqlParameter() { ParameterName = "@ShippingProvince", SqlDbType = SqlDbType.NVarChar, Value = shippingProvince });
-                prms.Add(new SqlParameter() { ParameterName = "@ShippingPcode", SqlDbType = SqlDbType.NVarChar, Value = shippingPostalCode });
+                    prms.Add(new SqlParameter() { ParameterName = "@ShippingStreet", SqlDbType = SqlDbType.NVarChar, Value = shippingStreet });
+                    prms.Add(new SqlParameter() { ParameterName = "@ShippingCity", SqlDbType = SqlDbType.NVarChar, Value = shippingCity });
+                    prms.Add(new SqlParameter() { ParameterName = "@ShippingProvince", SqlDbType = SqlDbType.NVarChar, Value = shippingProvince });
+                    prms.Add(new SqlParameter() { ParameterName = "@ShippingPcode", SqlDbType = SqlDbType.NVarChar, Value = shippingPostalCode });
 
-                DBHelper.Insert("UpdateShippingAddress", prms.ToArray());
-            }
+                    DBHelper.Insert("UpdateShippingAddress", prms.ToArray());
+                }
 
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
+                catch (Exception ex)
+                {
+                    lblError.Text = ex.Message;
+                }
             }
         }
 
@@ -231,5 +248,11 @@ namespace WhiteElephantWebsite
                 this.shippingAddress.Visible = false;
             }
         }
+
+        protected void cldExpiryDate_SelectionChanged(object sender, EventArgs e)
+        {
+            this.txtMyCal.Text = this.cldExpiryDate.SelectedDate.ToShortDateString();
+        }
     }
+    
 }
