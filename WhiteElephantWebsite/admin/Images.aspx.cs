@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using ImageD  = System.Drawing.Image;
+using ImageD = System.Drawing.Image;
 
 namespace WhiteElephantWebsite.admin
 {
@@ -20,8 +20,8 @@ namespace WhiteElephantWebsite.admin
             if (!IsPostBack)
             {
 
-                this.ddlImages.DataTextField = "name";
-                this.ddlImages.DataValueField = "id";
+                //this.ddlImages.DataTextField = "name";
+                //this.ddlImages.DataValueField = "id";
 
                 LoadFilesFromTempDir();
             }
@@ -30,7 +30,7 @@ namespace WhiteElephantWebsite.admin
         private void LoadFilesFromTempDir()
         {
 
-            DBHelper.DataBinding(ddlImages, "SelectImages");
+            //DBHelper.DataBinding(ddlImages, "SelectImages");
 
         }
 
