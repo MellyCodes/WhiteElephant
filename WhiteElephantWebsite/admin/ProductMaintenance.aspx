@@ -24,7 +24,7 @@
             OnPageIndexChanging="grdProducts_PageIndexChanging"
             PageSize="5"
             ShowFooter="True"
-            AllowSorting="true"
+            AllowSorting="True"
             >
             <FooterStyle BackColor="#3399ff" />
             <Columns>
@@ -120,6 +120,7 @@
                     <FooterTemplate>
                         <asp:FileUpload ID="uplNewImage" runat="server" />
                     </FooterTemplate>
+                    <ControlStyle Width="200px" />
                 </asp:TemplateField>
                 <asp:TemplateField ShowHeader="False">
                     <EditItemTemplate>

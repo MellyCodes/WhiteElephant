@@ -13,6 +13,15 @@ namespace WhiteElephantWebsite.admin {
     public partial class CategoryMaintenance {
         
         /// <summary>
+        /// ucAdminNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WhiteElephantWebsite.ucAdminNav ucAdminNav;
+        
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>

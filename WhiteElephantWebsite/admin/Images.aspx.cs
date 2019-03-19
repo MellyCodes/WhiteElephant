@@ -13,24 +13,34 @@ namespace WhiteElephantWebsite.admin
 {
     public partial class ImageApproval : AdminPage
     {
+
+        private string filePath;
+        private string fileName;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             base.Page_Load(sender, e);
 
             if (!IsPostBack)
             {
-
-                //this.ddlImages.DataTextField = "name";
-                //this.ddlImages.DataValueField = "id";
-
+                
                 LoadFilesFromTempDir();
             }
         }
 
-        private void LoadFilesFromTempDir()
-        {
+        private void LoadFilesFromTempDir() { 
 
-            //DBHelper.DataBinding(ddlImages, "SelectImages");
+            string[] filePaths = Directory.GetFiles(Server.MapPath("~/tempimages"));
+            List<ListItem> files = new List<ListItem>();
+            foreach (string filePath in filePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+                files.Add(new ListItem(fileName, "~/tempimages" + fileName));
+            }
+            ddlImages.DataSource = files;
+            ddlImages.DataBind();
+
+
 
         }
 
@@ -38,6 +48,13 @@ namespace WhiteElephantWebsite.admin
 
         protected void btnMove_Click(object sender, EventArgs e)
         {
+            //string sourceFile = "~/tempimages/" ;
+            //string destinationFile = @"C:\Users\Public\private\test.txt";
+
+            // To move a file or folder to a new location:
+            //System.IO.File.Move(sourceFile, destinationFile);
+
+            File.Move(filePath, "~/images/" + fileName);
 
         }
 
@@ -94,7 +111,10 @@ namespace WhiteElephantWebsite.admin
 
         protected void ddlImages_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //filePath = "~/tempimages/" + this.ddlImages.SelectedValue.ToString();
+            filePath = $@"{Server.MapPath("~/tempimages")}/{this.ddlImages.SelectedValue.ToString()}";
 
+            imgImageUpload.ImageUrl = filePath;
         }
     }
 }
