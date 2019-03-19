@@ -21,6 +21,7 @@ namespace WhiteElephantWebsite
                 if (!Common.IsUserAuthenticated(Session))
                 {
                     notLoggedIn.Visible = true;
+                    shippingCheckbox.Visible = false;
                     btnSubmitOrder.Visible = false;
                     lblTotal.Visible = false;
                     ship.Visible = false;
@@ -28,6 +29,7 @@ namespace WhiteElephantWebsite
                 }
                 else
                 {
+                    shippingCheckbox.Visible = true;
                     notLoggedIn.Visible = false;
                     btnSubmitOrder.Visible = true;
                     LoadUserDetails();
@@ -67,10 +69,11 @@ namespace WhiteElephantWebsite
 
             try
             {
+
                 int orderNumber = SubmitOrder();
                 SendEmail(orderNumber);
 
-                lblMessage.Text = $"Your CandyStore order has now been processed.<br />Order No: { orderNumber.ToString() }<br />An email has been sent as confirmation.";
+                lblMessage.Text = $"Your order has now been processed.<br />Order No: { orderNumber.ToString() }<br />An email has been sent as confirmation.";
 
                 //Remove the cart cookies from the user's system
                 Response.Cookies["CartUId"].Expires = DateTime.Now.AddDays(-1);
@@ -88,7 +91,34 @@ namespace WhiteElephantWebsite
 
                 this.btnSubmitOrder.Visible = false;
                 this.btnUpdateMyCart.Visible = false;
+
+                String shippingStreet = this.txtShippingStreet.Text.Trim();
+                String shippingCity = this.txtShippingCity.Text.Trim();
+                String shippingProvince = this.txtShippingProvince.Text.Trim();
+                String shippingPostalCode = this.txtShippingPostalCode.Text.Trim();
+
+                string authUser = Common.GetAuthenticatedUser(Session);
+
+                int customerId = DBHelper.GetQueryValue<int>("SelectCustomers", "id", new SqlParameter[]{ new SqlParameter() {
+                    ParameterName = "@EmailAddress",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 50,
+                    Value = authUser
+                }});
+
+
+                List<SqlParameter> prms = new List<SqlParameter>();
+
+                prms.Add(new SqlParameter() { ParameterName = "@CustomerId", SqlDbType = SqlDbType.Int, Value = customerId });
+
+                prms.Add(new SqlParameter() { ParameterName = "@ShippingStreet", SqlDbType = SqlDbType.NVarChar, Value = shippingStreet });
+                prms.Add(new SqlParameter() { ParameterName = "@ShippingCity", SqlDbType = SqlDbType.NVarChar, Value = shippingCity });
+                prms.Add(new SqlParameter() { ParameterName = "@ShippingProvince", SqlDbType = SqlDbType.NVarChar, Value = shippingProvince });
+                prms.Add(new SqlParameter() { ParameterName = "@ShippingPcode", SqlDbType = SqlDbType.NVarChar, Value = shippingPostalCode });
+
+                DBHelper.Insert("UpdateShippingAddress", prms.ToArray());
             }
+
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
@@ -130,12 +160,12 @@ namespace WhiteElephantWebsite
                 MailMessage mail = new MailMessage();
 
                 //set the addresses
-                mail.From = new MailAddress("noreply@candycompany.com");
+                mail.From = new MailAddress("noreply@whiteelephant.com");
                 mail.To.Add(Common.GetAuthenticatedUser(Session));
 
                 //set the content
-                mail.Subject = $"CandyStore Order Confirmation No: {orderNumber.ToString()}";
-                mail.Body = $"{html}Your order from the CandyStore has now be confirmed. It will be released " +
+                mail.Subject = $"White Elephant Order Confirmation No: {orderNumber.ToString()}";
+                mail.Body = $"{html}Your order has now be confirmed. It will be released " +
                     $"for delivery within 3 business days.<br /><br />Order No:{orderNumber.ToString()}<br /><br />Order " +
                     $"Details<br />{BuildEmailOrderTable(orderNumber)}</body></html>";
 
@@ -188,6 +218,18 @@ namespace WhiteElephantWebsite
             sb.Append("</table>");
             sb.Append($"Order Total: {orderTotal.ToString("c2") }");
             return sb.ToString();
+        }
+
+        protected void chkDifferentShipping_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDifferentShipping.Checked)
+            {
+                this.shippingAddress.Visible = true;
+            }
+            else
+            {
+                this.shippingAddress.Visible = false;
+            }
         }
     }
 }
