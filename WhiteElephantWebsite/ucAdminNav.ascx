@@ -3,7 +3,9 @@
     <asp:Image ID="logo" runat="server" ImageUrl="~/images/WhiteElephantLogo.png" /><br />   
     <asp:Label ID="lblHeading" EnableViewState="false" runat="server" Text="" CssClass="content-heading large">Administration Portal</asp:Label>
     <nav>
-        <a href="ProductMaintenance.aspx">Product Maintenance</a> &middot <a href="Images.aspx">Image Maintenance</a> &middot <a href="CategoryMaintenance.aspx">Category Maintenance</a> &middot
+        <a href="ProductMaintenance.aspx">Product Maintenance</a> &middot 
+        <a href="Images.aspx">Image Maintenance</a> &middot 
+        <a href="CategoryMaintenance.aspx">Category Maintenance</a> &middot
         <asp:HyperLink ID="hypLogin" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
     </nav>
     <hr />

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="AccountCreation.aspx" />
     <Content Include="admin\AdminDashboard.aspx" />
+    <Content Include="admin\CategoryMaintenance.aspx" />
     <Content Include="admin\Images.aspx" />
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\ProductMaintenance.aspx" />
@@ -102,6 +103,13 @@
     </Compile>
     <Compile Include="admin\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CategoryMaintenance.aspx.cs">
+      <DependentUpon>CategoryMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CategoryMaintenance.aspx.designer.cs">
+      <DependentUpon>CategoryMaintenance.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Images.aspx.cs">
       <DependentUpon>Images.aspx</DependentUpon>

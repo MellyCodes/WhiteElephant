@@ -12,7 +12,6 @@ namespace WhiteElephantWebsite.admin
     public partial class ProductMaintenance : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
-
         {
             base.Page_Load(sender, e);
             lblMessage.Text = "";

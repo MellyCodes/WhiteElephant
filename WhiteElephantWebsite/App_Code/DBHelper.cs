@@ -410,6 +410,33 @@ namespace WhiteElephantWebsite
 
         }
 
+        #region [Common Category SqlParams]
+
+
+        public static SqlParameter SetCategoryNameParam(string value)
+        {
+            return new SqlParameter()
+            {
+                ParameterName = "@CategoryName",
+                SqlDbType = SqlDbType.NVarChar,
+                Size = 50,
+                Value = value
+            };
+        }
+
+        public static SqlParameter SetCategoryDescParam(string value)
+        {
+            return new SqlParameter()
+            {
+                ParameterName = "@Description",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = value
+            };
+        }
+
+
+        #endregion
+
         #region [Common Product SqlParams]
 
         public static SqlParameter SetProductIdParam(int value)
