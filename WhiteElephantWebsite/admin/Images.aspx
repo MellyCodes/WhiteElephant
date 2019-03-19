@@ -15,9 +15,9 @@
         <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Green"></asp:Label>
         <div>
             <asp:FileUpload ID="uplImage" runat="server" /><asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click"   /><br />
-            <asp:Image ID="imgImageUpload" runat="server" Visible="false"/>
             <br />
             <asp:DropDownList ID="ddlImages" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="ddlImages_SelectedIndexChanged" ></asp:DropDownList> <asp:Button ID="btnMove" runat="server" Text="Move to Images" OnClick="btnMove_Click" />
+            <asp:Image ID="imgImageUpload" runat="server"/>
         </div>
        
 </div>

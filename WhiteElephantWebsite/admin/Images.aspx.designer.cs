@@ -58,15 +58,6 @@ namespace WhiteElephantWebsite.admin {
         protected global::System.Web.UI.WebControls.Button btnUpload;
         
         /// <summary>
-        /// imgImageUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgImageUpload;
-        
-        /// <summary>
         /// ddlImages control.
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace WhiteElephantWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMove;
+        
+        /// <summary>
+        /// imgImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgImageUpload;
     }
 }
