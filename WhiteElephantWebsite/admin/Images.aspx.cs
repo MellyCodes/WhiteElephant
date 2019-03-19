@@ -19,12 +19,18 @@ namespace WhiteElephantWebsite.admin
 
             if (!IsPostBack)
             {
+
+                this.ddlImages.DataTextField = "name";
+                this.ddlImages.DataValueField = "id";
+
                 LoadFilesFromTempDir();
             }
         }
 
         private void LoadFilesFromTempDir()
         {
+
+            DBHelper.DataBinding(ddlImages, "SelectImages");
 
         }
 
