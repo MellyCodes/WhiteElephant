@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductSearch.ascx.cs" Inherits="WhiteElephantWebsite.ucProductSearch" %>
 
-<!--
-     
-     @project White Elephant E-Commerce Website
+<%--
+    
+    @project White Elephant E-Commerce Website
      @authors Courtney Diotte
      @authors Melanie Roy-Plommer
      @version 1.0
@@ -27,8 +27,8 @@
     
      @section Academic Integrity
      I certify that this work is solely my own and complies with
-     NBCC Academic Integrity Policy (policy 1111)
-     -->
+     NBCC Academic Integrity Policy (policy 1111)--%>
+
 <div id="col3">
 <h5>Product Search</h5>
 <asp:TextBox ID="txtSearch" runat="server" Height="47px" Width="182px"></asp:TextBox><br /><br />

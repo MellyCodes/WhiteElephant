@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/My.Master" AutoEventWireup="true" CodeBehind="CategoryMaintenance.aspx.cs" Inherits="WhiteElephantWebsite.admin.CategoryMaintenance" %>
 <%@ Register TagPrefix="uc1" TagName="ucAdminNav" Src="~/ucAdminNav.ascx" %>
 
-<!--
-     
-     @project White Elephant E-Commerce Website
+<%--
+    
+    @project White Elephant E-Commerce Website
      @authors Courtney Diotte
      @authors Melanie Roy-Plommer
      @version 1.0
@@ -28,9 +28,7 @@
     
      @section Academic Integrity
      I certify that this work is solely my own and complies with
-     NBCC Academic Integrity Policy (policy 1111)
-     -->
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     NBCC Academic Integrity Policy (policy 1111)--%><asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder5" runat="server">
     <uc1:ucAdminNav runat="server" ID="ucAdminNav" />

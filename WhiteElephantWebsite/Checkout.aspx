@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/My.Master" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="WhiteElephantWebsite.Checkout" %>
-<!--
-     
-     @project White Elephant E-Commerce Website
+<%--
+    
+    @project White Elephant E-Commerce Website
      @authors Courtney Diotte
      @authors Melanie Roy-Plommer
      @version 1.0
@@ -26,8 +26,7 @@
     
      @section Academic Integrity
      I certify that this work is solely my own and complies with
-     NBCC Academic Integrity Policy (policy 1111)
-     -->
+     NBCC Academic Integrity Policy (policy 1111)--%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

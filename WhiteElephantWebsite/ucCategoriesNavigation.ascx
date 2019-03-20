@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucCategoriesNavigation.ascx.cs" Inherits="WhiteElephantWebsite.ucCategoriesNavigation" %>
-<!--
-     
-     @project White Elephant E-Commerce Website
+<%--
+    
+    @project White Elephant E-Commerce Website
      @authors Courtney Diotte
      @authors Melanie Roy-Plommer
      @version 1.0
@@ -26,8 +26,7 @@
     
      @section Academic Integrity
      I certify that this work is solely my own and complies with
-     NBCC Academic Integrity Policy (policy 1111)
-     -->
+     NBCC Academic Integrity Policy (policy 1111)--%>
 
 <h5>Product Categories</h5>
 <asp:DataList ID="dtvCategories" runat="server" CellPadding="4" ForeColor="#333333" Height="241px" Width="217px" >
