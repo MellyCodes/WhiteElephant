@@ -490,7 +490,7 @@ namespace WhiteElephantWebsite
             };
         }
 
-        public static SqlParameter SetProductPriceParam(decimal value)
+        public static SqlParameter SetProductPriceParam(double value)
         {
             return new SqlParameter()
             {
@@ -531,7 +531,7 @@ namespace WhiteElephantWebsite
             };
         }
 
-        public static SqlParameter SetProductImageName(DateTime value)
+        public static SqlParameter SetProductImageDate(DateTime value)
         {
             return new SqlParameter()
             {

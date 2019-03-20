@@ -71,7 +71,8 @@ namespace WhiteElephantWebsite.admin
                 string productName = txtProductName.Text.Trim();
                 string productBriefDesc = txtBriefDesc.Text.Trim();
                 string productFullDesc = txtFullDesc.Text.Trim();
-                decimal price = Convert.ToDecimal(txtPrice.Text.Trim());
+                double price;
+                Double.TryParse(txtPrice.Text.Trim(),out price);
                 bool featured = chkFeatured.Checked;
                 bool status = chkStatus.Checked;
                 string fileName = $"{ Server.MapPath("~/images/")}{ uplImage.FileName}";
@@ -90,11 +91,13 @@ namespace WhiteElephantWebsite.admin
                 prms.Add(DBHelper.SetProductFeaturedParam(featured));
                 prms.Add(DBHelper.SetProductStatusCodeParam(status));
 
-                if (fileName != "") //Don't make changes to the current image
+                if (fileName!="") //Don't make changes to the current image
                 {
+
+                    
                     prms.Add(DBHelper.SetProductImageName(imageName));
                     prms.Add(DBHelper.SetProductImageAlt(altText));
-                    prms.Add(DBHelper.SetProductImageName(DateTime.Now));
+                    prms.Add(DBHelper.SetProductImageDate(DateTime.Now));
                 }
 
                 prms.Add(DBHelper.SetCategoryIdParam(categoryId));
@@ -168,7 +171,8 @@ namespace WhiteElephantWebsite.admin
                 string productName = txtProductName.Text.Trim();
                 string productBriefDesc = txtBriefDesc.Text.Trim();
                 string productFullDesc = txtFullDesc.Text.Trim();
-                decimal price = Convert.ToDecimal(txtPrice.Text.Trim());
+                double price;
+                Double.TryParse(txtPrice.Text.Trim(), out price);
                 bool featured = chkFeatured.Checked;
                 bool status = chkStatus.Checked;
                 string fileName = $"{ Server.MapPath("~/images/")}{ uplImage.FileName}";
@@ -186,7 +190,7 @@ namespace WhiteElephantWebsite.admin
                 prms.Add(DBHelper.SetProductStatusCodeParam(status));
                 prms.Add(DBHelper.SetProductImageName(imageName));
                 prms.Add(DBHelper.SetProductImageAlt(altText));
-                prms.Add(DBHelper.SetProductImageName(DateTime.Now));
+                prms.Add(DBHelper.SetProductImageDate(DateTime.Now));
                 prms.Add(DBHelper.SetCategoryIdParam(categoryId));
 
                 prms.Add(new SqlParameter()
