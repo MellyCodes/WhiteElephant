@@ -55,12 +55,15 @@ namespace WhiteElephantWebsite.admin
 
         protected void grdProducts_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+
+
+
             List<SqlParameter> prms = new List<SqlParameter>();
 
             TextBox txtProductName = (TextBox)this.grdProducts.Rows[e.RowIndex].FindControl("txtProductName");
             TextBox txtBriefDesc = (TextBox)this.grdProducts.Rows[e.RowIndex].FindControl("txtBriefDesc");
             TextBox txtFullDesc = (TextBox)this.grdProducts.Rows[e.RowIndex].FindControl("txtFullDesc");
-            TextBox txtPrice = (TextBox)this.grdProducts.FooterRow.FindControl("txtPrice");
+            TextBox txtPrice = (TextBox)this.grdProducts.Rows[e.RowIndex].FindControl("txtPrice");
             CheckBox chkFeatured = (CheckBox)this.grdProducts.Rows[e.RowIndex].FindControl("chkFeatured");
             CheckBox chkStatus = (CheckBox)this.grdProducts.Rows[e.RowIndex].FindControl("chkStatus");
             FileUpload uplImage = (FileUpload)this.grdProducts.Rows[e.RowIndex].FindControl("uplUpdateImage");
@@ -71,6 +74,7 @@ namespace WhiteElephantWebsite.admin
                 string productName = txtProductName.Text.Trim();
                 string productBriefDesc = txtBriefDesc.Text.Trim();
                 string productFullDesc = txtFullDesc.Text.Trim();
+                
                 double price;
                 Double.TryParse(txtPrice.Text.Trim(),out price);
                 bool featured = chkFeatured.Checked;
@@ -81,7 +85,7 @@ namespace WhiteElephantWebsite.admin
                 int categoryId = ddlCategories.SelectedIndex > 0 ? Convert.ToInt32(ddlCategories.SelectedValue) : 0;
                 int productId = Convert.ToInt32(this.grdProducts.DataKeys[e.RowIndex].Values[0]);
 
-                uplImage.SaveAs(fileName);
+                
 
                 prms.Add(DBHelper.SetProductIdParam(productId));
                 prms.Add(DBHelper.SetProductNameParam(productName));
@@ -91,10 +95,10 @@ namespace WhiteElephantWebsite.admin
                 prms.Add(DBHelper.SetProductFeaturedParam(featured));
                 prms.Add(DBHelper.SetProductStatusCodeParam(status));
 
-                if (fileName!="") //Don't make changes to the current image
+                if (uplImage.FileName != "") //Don't make changes to the current image
                 {
+                    uplImage.SaveAs(fileName);
 
-                    
                     prms.Add(DBHelper.SetProductImageName(imageName));
                     prms.Add(DBHelper.SetProductImageAlt(altText));
                     prms.Add(DBHelper.SetProductImageDate(DateTime.Now));
@@ -111,7 +115,10 @@ namespace WhiteElephantWebsite.admin
                 lblError.Text = ex.Message;
             }
 
+            grdProducts.EditIndex = -1;
             LoadProductsGridView();
+            
+
         }
 
         protected void grdProducts_RowEditing(object sender, GridViewEditEventArgs e)

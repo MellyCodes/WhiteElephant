@@ -43,18 +43,28 @@ namespace WhiteElephantWebsite.admin
 
         protected void grdCategories_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            lblError.Text = "";
+            lblMessage.Text = "";
             int categoryId = Convert.ToInt32(this.grdCategories.DataKeys[e.RowIndex].Values[0]);
             SqlParameter prmCategoryId = new SqlParameter() { ParameterName = "@CategoryId", SqlDbType = SqlDbType.Int, Value = categoryId };
 
             // TODO: Need to check if product exists in category before deleteing it
 
-            DBHelper.NonQuery("DeleteCategory", new SqlParameter[] { prmCategoryId });
+            try
+            {
+                DBHelper.NonQuery("DeleteCategory", new SqlParameter[] { prmCategoryId });
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
 
             LoadCategoriesGridView();
         }
 
         protected void grdCategories_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            lblError.Text = "";
             lblMessage.Text = "";
             List<SqlParameter> prms = new List<SqlParameter>();
 

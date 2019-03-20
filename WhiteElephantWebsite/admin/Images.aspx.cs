@@ -16,6 +16,7 @@ namespace WhiteElephantWebsite.admin
         List<ListItem> files = new List<ListItem>();
         private string sourcePath;
         private string destinationPath;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -36,6 +37,12 @@ namespace WhiteElephantWebsite.admin
                 string fileName = Path.GetFileName(filePath);
                 files.Add(new ListItem(fileName, "~/tempimages" + fileName));
             }
+
+            ddlImages.Items.Clear();
+
+            //ddlImages.Items.Add(new ListItem("-- Select Image --", "-1"));
+            ddlImages.Items.Insert(0, new ListItem("-- Select Image --", "-1"));
+
             ddlImages.DataSource = files;
             ddlImages.DataBind();
 
@@ -47,18 +54,25 @@ namespace WhiteElephantWebsite.admin
 
         protected void btnMove_Click(object sender, EventArgs e)
         {
-            //string sourceFile = "~/tempimages/" ;
-            //string destinationFile = @"C:\Users\Public\private\test.txt";
+            lblMessage.Text = "";
+            lblError.Text = "";
+            this.sourcePath = $@"{Server.MapPath("~/tempimages")}/{this.ddlImages.SelectedValue.ToString()}";
+            this.destinationPath = $@"{Server.MapPath("~/images")}/{this.ddlImages.SelectedValue.ToString()}";
 
-            // To move a file or folder to a new location:
-            //System.IO.File.Move(sourceFile, destinationFile);
 
             File.Move(sourcePath, destinationPath);
+            lblMessage.Text = "Image Approved";
 
+            imgImageUpload.ImageUrl = "";
+
+            LoadFilesFromTempDir();
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+
+            lblMessage.Text = "";
+            lblError.Text = "";
             try
             {
                 string targetPath = $@"{Server.MapPath("~/tempimages")}";
@@ -110,11 +124,7 @@ namespace WhiteElephantWebsite.admin
 
         protected void ddlImages_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
-            sourcePath = "~/tempimages/" + this.ddlImages.SelectedValue.ToString();
-            destinationPath = "~/images/" + this.ddlImages.SelectedValue.ToString();
-            //this.sourcePath = $@"{Server.MapPath("~/tempimages")}/{this.ddlImages.SelectedValue.ToString()}";
-            // this.destinationPath = $@"{Server.MapPath("~/images")}/{this.ddlImages.SelectedValue.ToString()}";
+            this.sourcePath = $"~/tempimages/{this.ddlImages.SelectedValue.ToString()}";
             imgImageUpload.ImageUrl = sourcePath;
         }
     }
