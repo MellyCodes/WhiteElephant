@@ -128,6 +128,10 @@ namespace WhiteElephantWebsite
 
             decimal cartTotal = DBHelper.GetQueryValue<decimal>("CartTotal", "Total", prms.ToArray());
 
+            double temp;
+            Double.TryParse(cartTotal.ToString(), out temp);
+            temp = temp * 1.15;
+            cartTotal = (Decimal)temp;
             return cartTotal;
         }
     }
