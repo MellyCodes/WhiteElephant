@@ -35,6 +35,7 @@
         <a href="ProductMaintenance.aspx">Product Maintenance</a> &middot 
         <a href="Images.aspx">Image Maintenance</a> &middot 
         <a href="CategoryMaintenance.aspx">Category Maintenance</a> &middot
+        <a href="ManageCustomerAccount.aspx">Manage Customer Accounts</a> &middot
         <asp:HyperLink ID="hypLogin" runat="server" NavigateUrl="~/Logout.aspx">Logout</asp:HyperLink>
     </nav>
     <hr />
