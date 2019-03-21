@@ -34,6 +34,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <h2>Account Details</h2>
     <asp:DetailsView ID="detUser" runat="server" Height="50px" Width="483px" AutoGenerateRows="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
         OnModeChanging="detUser_ModeChanging" OnItemUpdating="detUser_ItemUpdating">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -41,7 +42,6 @@
     <EditRowStyle BackColor="#999999" />
     <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
     <Fields>
-        <asp:BoundField DataField="email" HeaderText="Email" />
         <asp:BoundField DataField="street" HeaderText="Street:" />
         <asp:BoundField DataField="city" HeaderText="City:" />
         <asp:BoundField DataField="province" HeaderText="Province:" />

@@ -22,6 +22,15 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl notLoggedIn;
         
         /// <summary>
+        /// checkoutOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl checkoutOrder;
+        
+        /// <summary>
         /// ship control.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regPostalCode;
         
         /// <summary>
+        /// ccInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ccInfo;
+        
+        /// <summary>
         /// creditCardInfo control.
         /// </summary>
         /// <remarks>
@@ -256,6 +274,15 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regCVV;
         
         /// <summary>
+        /// lblExpiryDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExpiryDate;
+        
+        /// <summary>
         /// cldExpiryDate control.
         /// </summary>
         /// <remarks>
@@ -301,15 +328,6 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.WebControls.GridView grdCart;
         
         /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
         /// lblTax control.
         /// </summary>
         /// <remarks>
@@ -344,6 +362,15 @@ namespace WhiteElephantWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCartTotal;
+        
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// lblMessage control.

@@ -79,10 +79,8 @@ namespace WhiteElephantWebsite.admin
 
             grdCustomers.EditIndex = -1;
             LoadCustomersGridView();
-
-
+            
         }
-        
 
     }
 }

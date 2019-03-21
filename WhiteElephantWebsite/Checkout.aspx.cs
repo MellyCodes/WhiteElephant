@@ -67,12 +67,15 @@ namespace WhiteElephantWebsite
                     btnSubmitOrder.Visible = false;
                     lblTotal.Visible = false;
                     lblCartTax.Visible = false;
+                    ccInfo.Visible = false;
                     lblTax.Visible = false;
                     ship.Visible = false;
                     order.Visible = false;
                 }
                 else
                 {
+                    checkoutOrder.Visible = true;
+                    ccInfo.Visible = true;
                     creditCardInfo.Visible = true;
                     shippingCheckbox.Visible = true;
                     notLoggedIn.Visible = false;
@@ -124,12 +127,14 @@ namespace WhiteElephantWebsite
             {
                 try
                 {
-
+                    lblCartTax.Visible = false;
+                    lblTax.Visible = false;
                     int orderNumber = SubmitOrder();
                     SendEmail(orderNumber);
 
                     lblMessage.Text = $"Your order has now been processed.<br />Order No: { orderNumber.ToString() }<br />An email has been sent as confirmation.";
 
+                    checkoutOrder.Visible = false;
                     //Remove the cart cookies from the user's system
                     Response.Cookies["CartUId"].Expires = DateTime.Now.AddDays(-1);
 
@@ -291,6 +296,15 @@ namespace WhiteElephantWebsite
         protected void cldExpiryDate_SelectionChanged(object sender, EventArgs e)
         {
             this.txtMyCal.Text = this.cldExpiryDate.SelectedDate.ToShortDateString();
+
+            Common.GetCart(this.grdCart, Request, Response);
+            this.lblCartTotal.Text = Common.GetCartTotal(Request, Response).ToString("c2");
+            Double temp;
+            Double.TryParse(Common.GetCartTotal(Request, Response).ToString(), out temp);
+
+            temp *= 0.15;
+
+            this.lblCartTax.Text = temp.ToString("c2");
         }
 
         protected void ddlCardType_SelectedIndexChanged(object sender, EventArgs e)
