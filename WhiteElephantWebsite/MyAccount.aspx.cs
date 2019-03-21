@@ -91,11 +91,11 @@ namespace WhiteElephantWebsite
 
             try
             {
-                string street = ((TextBox)detUser.Rows[1].Cells[1].Controls[0]).Text;
-                string city = ((TextBox)detUser.Rows[2].Cells[1].Controls[0]).Text;
-                string prov = ((TextBox)detUser.Rows[3].Cells[1].Controls[0]).Text;
-                string pCode = ((TextBox)detUser.Rows[4].Cells[1].Controls[0]).Text;
-                string pNum = ((TextBox)detUser.Rows[5].Cells[1].Controls[0]).Text;
+                string street = ((TextBox)detUser.Rows[0].Cells[1].Controls[0]).Text;
+                string city = ((TextBox)detUser.Rows[1].Cells[1].Controls[0]).Text;
+                string prov = ((TextBox)detUser.Rows[2].Cells[1].Controls[0]).Text;
+                string pCode = ((TextBox)detUser.Rows[3].Cells[1].Controls[0]).Text;
+                string pNum = ((TextBox)detUser.Rows[4].Cells[1].Controls[0]).Text;
                
                 string user = Common.GetAuthenticatedUser(Session);
              
