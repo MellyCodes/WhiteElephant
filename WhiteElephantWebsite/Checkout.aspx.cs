@@ -66,6 +66,8 @@ namespace WhiteElephantWebsite
                     shippingCheckbox.Visible = false;
                     btnSubmitOrder.Visible = false;
                     lblTotal.Visible = false;
+                    lblCartTax.Visible = false;
+                    lblTax.Visible = false;
                     ship.Visible = false;
                     order.Visible = false;
                 }
@@ -75,9 +77,18 @@ namespace WhiteElephantWebsite
                     shippingCheckbox.Visible = true;
                     notLoggedIn.Visible = false;
                     btnSubmitOrder.Visible = true;
+
+                    lblCartTax.Visible = true;
+                    lblTax.Visible = true;
                     LoadUserDetails();
                     Common.GetCart(this.grdCart, Request, Response);
                     this.lblCartTotal.Text = Common.GetCartTotal(Request, Response).ToString("c2");
+                    Double temp;
+                    Double.TryParse(Common.GetCartTotal(Request, Response).ToString(), out temp);
+
+                    temp *= 0.15;
+
+                    this.lblCartTax.Text = temp.ToString("c2");
                 }
             }
         }

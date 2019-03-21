@@ -22,6 +22,24 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.WebControls.GridView grdCart;
         
         /// <summary>
+        /// lblTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTax;
+        
+        /// <summary>
+        /// lblCartTax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCartTax;
+        
+        /// <summary>
         /// lblTotal control.
         /// </summary>
         /// <remarks>

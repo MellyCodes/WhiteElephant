@@ -174,6 +174,9 @@
     </asp:GridView>
     <div style="text-align: center">
         <asp:Label ID="lblError" runat="server" EnableViewState="false" CssClass="red"></asp:Label>
+        <asp:Label ID="lblTax" runat="server" Text="Tax:"></asp:Label>
+&nbsp;<asp:Label ID="lblCartTax" runat="server" Font-Bold="True"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblTotal" runat="server" Text="Total:" EnableViewState="false"></asp:Label>
         <asp:Label ID="lblCartTotal" runat="server" Text="" Font-Bold="true" EnableViewState="false"></asp:Label>
         <asp:Label ID="lblMessage" runat="server" Text="" EnableViewState="false"></asp:Label>

@@ -57,6 +57,8 @@ namespace WhiteElephantWebsite
                 this.btnCheckout.Visible = false;
                 this.btnContinueShopping.Visible = false;
                 this.btnUpdateCart.Visible = false;
+                this.lblTax.Visible = false;
+                this.lblCartTax.Visible = false;
                 this.lblTotal.Text = "No items in cart";
                 this.lblCartTotal.Visible = false;
             }
@@ -65,6 +67,12 @@ namespace WhiteElephantWebsite
         private void GetCartTotal()
         {
             this.lblCartTotal.Text = Common.GetCartTotal(Request, Response).ToString("c2");
+            Double temp;
+            Double.TryParse(Common.GetCartTotal(Request, Response).ToString(), out temp);
+
+            temp *= 0.15;
+
+            this.lblCartTax.Text = temp.ToString("c2");
         }
 
         protected void btnUpdateCart_Click(object sender, EventArgs e)
