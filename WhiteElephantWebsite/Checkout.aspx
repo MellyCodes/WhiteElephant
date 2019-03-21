@@ -102,11 +102,8 @@
             ToolTip="You must provide a credit card number"
             ForeColor="Red">*</asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regCreditCardNumber" runat="server"
-                        ErrorMessage="Credit card number must be 15 digits"
                         ForeColor="Red"
-                        ToolTip="Credit card number must be 15 digits"
-                        ControlToValidate="txtCreditCardNumber"
-                        ValidationExpression="[1-9][0-9]{14}"
+                        ControlToValidate="txtCreditCardNumber"                        
                         ValidationGroup="Card1"
                         Display="Dynamic">
                     </asp:RegularExpressionValidator>
@@ -114,9 +111,11 @@
         <br />
         <asp:Label ID="lblCardType" runat="server" Text="Card Type:"></asp:Label>
         <br />
-        <asp:DropDownList ID="ddlCardType" AppendDataBoundItems="true" runat="server">
-            <asp:ListItem Text="Visa" Value="0" />
-            <asp:ListItem Text="Mastercard" Value="0" />
+        <asp:DropDownList ID="ddlCardType" AppendDataBoundItems="true" runat="server" OnSelectedIndexChanged="ddlCardType_SelectedIndexChanged">
+            <asp:ListItem runat="server" Text="-- Select Credit Card --"/>
+            <asp:ListItem runat="server" Text="Visa" Value="0"  />
+            <asp:ListItem runat="server" Text="Mastercard" Value="1" />
+            <asp:ListItem runat="server" Text="American Express" Value="2" />
         </asp:DropDownList>
         <asp:RequiredFieldValidator ID="reqCardType"
             ValidationGroup="Card1"
@@ -147,13 +146,13 @@
                         Display="Dynamic">
                     </asp:RegularExpressionValidator>
         <br />
-        <asp:Label ID="lblExpiry" runat="server" Text="Expiry Date: "></asp:Label>
-        <br />
+
         <asp:Calendar ID="cldExpiryDate" runat="server" OnSelectionChanged="cldExpiryDate_SelectionChanged"></asp:Calendar>
         <asp:TextBox ID="txtMyCal" runat="server"></asp:TextBox>
         <asp:RangeValidator ID="rngMydate"
                             runat="server"
                             ErrorMessage="Invalid date."
+                            ForeColor="Red"
                             ToolTip="Invalid date"
                             ValidationGroup="Card1"
                             ControlToValidate="txtMyCal"

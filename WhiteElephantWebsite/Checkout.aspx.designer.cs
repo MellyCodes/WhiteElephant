@@ -256,15 +256,6 @@ namespace WhiteElephantWebsite {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regCVV;
         
         /// <summary>
-        /// lblExpiry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExpiry;
-        
-        /// <summary>
         /// cldExpiryDate control.
         /// </summary>
         /// <remarks>

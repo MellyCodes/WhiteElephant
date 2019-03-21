@@ -292,6 +292,33 @@ namespace WhiteElephantWebsite
         {
             this.txtMyCal.Text = this.cldExpiryDate.SelectedDate.ToShortDateString();
         }
+
+        protected void ddlCardType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string CardType = ddlCardType.SelectedItem.Text;
+            switch (CardType)
+            {
+                case "Visa": //Visa
+                    regCreditCardNumber.ValidationExpression = "^(4[0-9]{12}(?:[0-9]{3})?)";
+                    regCreditCardNumber.ErrorMessage = "Visa numbers must be either 13 or 16 digits beginning with 4";
+                    regCreditCardNumber.ToolTip = "Visa numbers must be either 13 or 16 digits begining with 4";
+                    break;
+                case "Mastercard": //Mastercard
+                    regCreditCardNumber.ValidationExpression = "^(5[1-5][0-9]{14})";
+                    regCreditCardNumber.ErrorMessage = "MasterCard numbers must be 16 digits beginning with 51 through 55";
+                    regCreditCardNumber.ToolTip = "MasterCard numbers must be 16 digits beginning with 51 through 55";
+                    break;
+                case "American Express": //Amex
+                    regCreditCardNumber.ValidationExpression = "^(3[47][0-9]{13})";
+                    regCreditCardNumber.ErrorMessage = "American Express numbers must be 15 digits beginning with 34 or 37";
+                    regCreditCardNumber.ToolTip = "American Express numbers must be 15 digits beginning with 34 or 37";
+                    break;
+                default:
+                    break;
+                    
+            }
+        }
     }
     
 }
