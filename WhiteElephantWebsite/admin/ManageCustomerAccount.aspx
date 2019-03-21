@@ -11,14 +11,12 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <asp:GridView ID="grdCustomers" runat="server" AutoGenerateColumns="False"
             DataKeyNames="id"
-            OnRowUpdating="grdCustomer_RowUpdating"
-            OnRowEditing="grdCustomer_RowEditing"
-            OnRowCancelingEdit="grdCustomer_RowCancelingEdit"
+            OnRowDeleting="UpdateArchive"
             AllowPaging="True"
             OnPageIndexChanging="grdCustomer_PageIndexChanging"
             PageSize="5"
             ShowFooter="True"
-            AllowSorting="True"
+            AllowSorting="True" 
             >
             <FooterStyle BackColor="#3399ff" />
             <Columns>
@@ -28,18 +26,14 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="First Name">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCustomerFirstName" runat="server" Text='<%# Eval("firstName") %>'></asp:TextBox>
-                    </EditItemTemplate>
+                    
                     <ItemTemplate>
                         <asp:Label ID="lblCustomerFirstName" runat="server" Text='<%# Eval("firstName") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Last Name">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCustomerLastName" runat="server" Text='<%# Eval("lastName") %>'></asp:TextBox>
-                    </EditItemTemplate>
+                    
                     <ItemTemplate>
                         <asp:Label ID="lblCustomerLastName" runat="server" Text='<%# Eval("lastName") %>'></asp:Label>
                     </ItemTemplate>
@@ -47,22 +41,20 @@
                 
                 
                 <asp:TemplateField HeaderText="Archived">
-                    <EditItemTemplate>
-                        <asp:CheckBox ID="chkArchived" runat="server" Checked='<%# Bind("IsArchived") %>' />
-                    </EditItemTemplate>
                     
                     <ItemTemplate>
                         <asp:CheckBox ID="chkArchivedDisplay" runat="server" Checked='<%# Bind("IsArchived") %>' Enabled="False" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 
-                
-                <asp:TemplateField ShowHeader="False">
-                    <EditItemTemplate>
-                        <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update"
-                            Text="Update" />&nbsp;<asp:Button ID="btnCancel" runat="server" CausesValidation="False"
-                                CommandName="Cancel" Text="Cancel" />
-                    </EditItemTemplate>
+               
+                <asp:TemplateField>
+                    
+                    <ItemTemplate>
+                        <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Delete"
+                            Text="Archive" />
+                    </ItemTemplate>
+                    
                 </asp:TemplateField>
             </Columns>
 

@@ -26,33 +26,31 @@ namespace WhiteElephantWebsite.admin
             
         }
 
-        protected void grdCustomer_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            grdCustomers.EditIndex = -1;
-            LoadCustomersGridView();
-        }
-
         protected void grdCustomer_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdCustomers.PageIndex = e.NewPageIndex;
             LoadCustomersGridView();
         }
 
-        protected void grdCustomer_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            grdCustomers.EditIndex = e.NewEditIndex;
-            LoadCustomersGridView();
-        }
-
-        protected void grdCustomer_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void UpdateArchive(object sender, GridViewDeleteEventArgs e)
         {
             
             int custID = Convert.ToInt32(this.grdCustomers.DataKeys[e.RowIndex].Values[0]);
-            CheckBox chkArchived = (CheckBox)this.grdCustomers.Rows[e.RowIndex].FindControl("chkArchived");
-
+            CheckBox chkArchived = (CheckBox)this.grdCustomers.Rows[e.RowIndex].FindControl("chkArchivedDisplay");
+            chkArchived.Checked = true;
             try
             {
+                int temp = 0;
                 bool archive = chkArchived.Checked;
+
+                if(archive == true)
+                {
+                    temp = 1;
+                }
+                else
+                {
+                    temp = 0;
+                }
 
                 List<SqlParameter> prms = new List<SqlParameter>()
             {
@@ -65,14 +63,14 @@ namespace WhiteElephantWebsite.admin
                 },
                 new SqlParameter()
                 {
-                    ParameterName = "@IsArchived",
+                    ParameterName = "@Archive",
                     SqlDbType = SqlDbType.NVarChar,
                     Size = 20,
-                    Value = archive
+                    Value = temp
                 },
                 };
 
-                DBHelper.NonQuery("UpdateArchive", prms.ToArray());
+                DBHelper.Insert("UpdateArchive", prms.ToArray());
 
             }
             catch (Exception ex)
@@ -84,6 +82,7 @@ namespace WhiteElephantWebsite.admin
 
 
         }
+        
 
     }
 }
