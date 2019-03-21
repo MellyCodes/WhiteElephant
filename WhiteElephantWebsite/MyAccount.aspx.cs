@@ -28,6 +28,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,7 +41,131 @@ namespace WhiteElephantWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (!Common.IsUserAuthenticated(Session))
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
+                else
+                    LoadUserDetails();
+               
+            }
         }
+
+        private void LoadUserDetails()
+        {
+            string user = Common.GetAuthenticatedUser(Session);
+            SqlParameter userPrm = new SqlParameter()
+            {
+                ParameterName = "@EmailAddress",
+                SqlDbType = SqlDbType.NVarChar,
+                Size = 50,
+                Value = user
+            };
+
+            DBHelper.DataBinding(this.detUser, "SelectCustomers", new SqlParameter[] { userPrm });
+        }
+        
+
+        protected void detUser_ModeChanging(object sender, DetailsViewModeEventArgs e)
+        {
+            if (e.NewMode == DetailsViewMode.Edit)
+            {
+                detUser.ChangeMode(DetailsViewMode.Edit);
+                LoadUserDetails();
+            }
+            if (e.NewMode == DetailsViewMode.Insert)
+            {
+                detUser.ChangeMode(DetailsViewMode.Insert);
+            }
+            if (e.NewMode == DetailsViewMode.ReadOnly)
+            {
+                detUser.ChangeMode(DetailsViewMode.ReadOnly);
+                LoadUserDetails();
+            }
+        }
+
+        protected void detUser_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+        {
+
+            try
+            {
+                string street = ((TextBox)detUser.Rows[0].Cells[1].Controls[0]).Text;
+                string city = ((TextBox)detUser.Rows[1].Cells[1].Controls[0]).Text;
+                string prov = ((TextBox)detUser.Rows[2].Cells[1].Controls[0]).Text;
+                string pCode = ((TextBox)detUser.Rows[3].Cells[1].Controls[0]).Text;
+                string pNum = ((TextBox)detUser.Rows[4].Cells[1].Controls[0]).Text;
+               
+                string user = Common.GetAuthenticatedUser(Session);
+             
+
+                int customerId = DBHelper.GetQueryValue<int>("SelectCustomers", "id", new SqlParameter[]{ new SqlParameter() {
+                    ParameterName = "@EmailAddress",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 50,
+                    Value = user
+                }});
+
+                List<SqlParameter> prms = new List<SqlParameter>()
+            {
+                new SqlParameter()
+                {
+                    ParameterName = "@CustomerID",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 20,
+                    Value = customerId
+                },
+
+                 new SqlParameter()
+                {
+                    ParameterName = "@Street",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 20,
+                    Value = street
+                },
+
+                new SqlParameter()
+                {
+                    ParameterName = "@City",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 20,
+                    Value= city
+                },
+                new SqlParameter()
+                {
+                    ParameterName = "@Province",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 2,
+                    Value= prov
+                },
+                new SqlParameter()
+                {
+                    ParameterName = "@Pcode",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 6,
+                    Value= pCode
+                },
+                new SqlParameter()
+                {
+                    ParameterName = "@Phone",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 10,
+                    Value= pNum
+                },
+
+            };
+
+                DBHelper.Insert("UpdateCustomer", prms.ToArray());
+            }
+            catch(Exception ex)
+            {
+                //do stuff
+            }
+            detUser.ChangeMode(DetailsViewMode.ReadOnly);
+            LoadUserDetails();
+        }
+       
+
     }
 }

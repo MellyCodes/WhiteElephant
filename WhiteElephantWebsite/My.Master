@@ -53,6 +53,8 @@
                         <asp:HyperLink ID="hypHomeNav" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
                         &nbsp;&nbsp; &nbsp;  &nbsp; 
                         <asp:HyperLink ID="hypProductsNav" runat="server" NavigateUrl="~/Products.aspx">Products</asp:HyperLink>
+                        &nbsp;&nbsp; &nbsp;  &nbsp; 
+                        <asp:HyperLink ID="hypAccountDetails" runat="server" NavigateUrl="~/MyAccount.aspx">Account Details</asp:HyperLink>
                         &nbsp; &nbsp; &nbsp; &nbsp; 
                         <asp:HyperLink ID="hypLogin" runat="server">Login</asp:HyperLink>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; 
                         <asp:HyperLink ID="hypCart" runat="server" NavigateUrl="~/Cart.aspx">
