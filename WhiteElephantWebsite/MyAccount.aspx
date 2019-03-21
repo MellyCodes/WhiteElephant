@@ -41,6 +41,7 @@
     <EditRowStyle BackColor="#999999" />
     <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
     <Fields>
+        <asp:BoundField DataField="email" HeaderText="Email" />
         <asp:BoundField DataField="street" HeaderText="Street:" />
         <asp:BoundField DataField="city" HeaderText="City:" />
         <asp:BoundField DataField="province" HeaderText="Province:" />

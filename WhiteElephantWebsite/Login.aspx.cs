@@ -58,6 +58,7 @@ namespace WhiteElephantWebsite
 
             if (e.Authenticated)
             {
+                //FIX THIS
                 if (Request.QueryString["returnurl"] != null)
                     Response.Redirect($"~/{Request.QueryString["returnurl"]}");
                 else
