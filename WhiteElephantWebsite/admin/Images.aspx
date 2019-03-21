@@ -47,7 +47,9 @@
             <br />
             <asp:DropDownList ID="ddlImages" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlImages_SelectedIndexChanged" >
                 
-            </asp:DropDownList> <asp:Button ID="btnMove" runat="server" Text="Move to Images" OnClick="btnMove_Click" />
+            </asp:DropDownList> 
+            <asp:Button ID="btnDeleteImage" runat="server" OnClick="btnDeleteImage_Click" Text="Remove" />
+&nbsp;&nbsp; <asp:Button ID="btnMove" runat="server" Text="Move to Images" OnClick="btnMove_Click" />
                 
             <asp:Image ID="imgImageUpload" runat="server"/>
         </div>

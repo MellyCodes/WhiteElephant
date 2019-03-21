@@ -155,5 +155,23 @@ namespace WhiteElephantWebsite.admin
             this.sourcePath = $"~/tempimages/{this.ddlImages.SelectedValue.ToString()}";
             imgImageUpload.ImageUrl = sourcePath;
         }
+
+        protected void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            string file_name = ddlImages.SelectedItem.Text;
+            string path = $@"{Server.MapPath("~/tempimages")}/{file_name}";
+            FileInfo file = new FileInfo(path);
+            if (file.Exists)//check if file exists
+            {
+                this.imgImageUpload.ImageUrl = "";
+                file.Delete();
+                LoadFilesFromTempDir();
+                this.lblMessage.Text = file_name + " file deleted successfully";
+            }
+            else
+            {
+                this.lblMessage.Text = file_name + " This file does not exists ";
+            }
+        }
     }
 }
