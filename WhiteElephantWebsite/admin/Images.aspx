@@ -39,7 +39,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <div style="padding-bottom: 20px;">
-        <h4 style="text-align:center">Image Moving and File IO</h4>
+        <h3>Image Upload and Approval</h3>
         <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red"></asp:Label>
         <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Green"></asp:Label>
         <div>

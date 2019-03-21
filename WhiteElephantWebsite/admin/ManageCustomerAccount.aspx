@@ -9,6 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <h3>Manage Customer Accounts</h3>
     <asp:GridView ID="grdCustomers" runat="server" AutoGenerateColumns="False"
             DataKeyNames="id"
             OnRowDeleting="UpdateArchive"
