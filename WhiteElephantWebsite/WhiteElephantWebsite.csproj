@@ -78,6 +78,7 @@
     <Content Include="App_Themes\SiteTheme\SiteTheme.css" />
     <Content Include="Cart.aspx" />
     <Content Include="Checkout.aspx" />
+    <Content Include="ConfirmEmail.aspx" />
     <Content Include="css\layout.css" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="admin\ProductMaintenance.aspx.designer.cs">
       <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmEmail.aspx.cs">
+      <DependentUpon>ConfirmEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmEmail.aspx.designer.cs">
+      <DependentUpon>ConfirmEmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="ucAdminNav.ascx.cs">
       <DependentUpon>ucAdminNav.ascx</DependentUpon>

@@ -30,7 +30,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -65,6 +67,9 @@ namespace WhiteElephantWebsite
                     string postalCode = this.txtPostalCode.Text.Trim();
                     string phone = this.txtPhone.Text.Trim();
 
+                    // Call SendEmail();
+                    
+
                     if (CreateAccount(
                         firstName,
                         lastName,
@@ -78,7 +83,7 @@ namespace WhiteElephantWebsite
                     {
                         Session["authenticated"] = true;
                         Session["authenticatedUser"] = emailAddress;
-
+                        SendEmail();
                         if (Request.QueryString["returnurl"] != null)
                             Response.Redirect($"~/{Request.QueryString["returnurl"]}");
                         else
@@ -88,6 +93,8 @@ namespace WhiteElephantWebsite
                     {
                         this.lblError.Text = "The account was not created";
                     }
+
+                    
                 }
             }
             catch (SqlException ex)
@@ -191,6 +198,52 @@ namespace WhiteElephantWebsite
             id = DBHelper.Insert<int>("InsertCustomer", "@Identity", prms.ToArray());
 
             return id;
+        }
+
+
+
+        private void SendEmail()
+        {
+            try
+            {
+                string html = "<html><head><style>body{font-family:Arial; color:#000;} table, th, tr, td{ color:blue;border:1px solid #000;font-family:Arial; }</style></head><body>";
+
+                //create the mail message
+                MailMessage mail = new MailMessage();
+
+                //set the addresses
+                mail.From = new MailAddress("noreply@whiteelephant.com");
+                mail.To.Add(Common.GetAuthenticatedUser(Session));
+
+                //set the content
+                //mail.Subject = $"White Elephant Order Confirmation No: {orderNumber.ToString()}";
+                mail.Subject = $"Welcome!";
+
+                mail.Body = $"{html}Welcome to White Elephant Goods " +
+                    $"Please confirm your email by clicking the link below.<br />" +
+                    $"<br />" +
+                    $"<a href='~/ConfirmEmail.aspx'>Confirm Email</a>" +
+                    $"</body>" +
+                    $"</html>";
+
+
+                mail.IsBodyHtml = true;
+
+                DirectoryInfo dirInfo = new DirectoryInfo(@"C:\MyASPNETConfirmationEmails");
+
+                //check if dir exists, if not - create that directory
+                if (!dirInfo.Exists)
+                    Directory.CreateDirectory(@"C:\MyASPNETConfirmationEmails");
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+                smtp.PickupDirectoryLocation = @"C:\MyASPNETConfirmationEmails";
+                smtp.Send(mail);
+            }
+            catch
+            {
+                //Log or take some action
+            }
         }
     }
 }
