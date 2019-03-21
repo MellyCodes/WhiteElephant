@@ -45,10 +45,16 @@ namespace WhiteElephantWebsite
             {
                 if (!Common.IsUserAuthenticated(Session))
                 {
-                    Response.Redirect("~/Login.aspx");
+                    if (!Common.IsUserAuthenticated(Session))
+                    {
+                        notLoggedIn.Visible = true;
+                    }
                 }
                 else
+                {
+                    notLoggedIn.Visible = false;
                     LoadUserDetails();
+                }
                
             }
         }

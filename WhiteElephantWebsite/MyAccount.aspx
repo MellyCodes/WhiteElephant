@@ -35,6 +35,10 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <h2>Account Details</h2>
+    <br />
+     <div id="notLoggedIn" runat="server" visible="false">
+        You are not logged in. <a href="Login.aspx?returnurl=MyAccount.aspx">Login</a> or <a href="AccountCreation.aspx?returnurl=MyAccount.aspx">create a new account</a> to view and manage your account.
+    </div>
     <asp:DetailsView ID="detUser" runat="server" Height="50px" Width="483px" AutoGenerateRows="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
         OnModeChanging="detUser_ModeChanging" OnItemUpdating="detUser_ItemUpdating">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
