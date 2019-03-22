@@ -13,19 +13,15 @@ namespace WhiteElephantWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string email = Request.QueryString["email"];
+            ActivateCustomer(email);
 
         }
 
-        protected void lbnConfirmEmail_Click(object sender, EventArgs e)
-        {
-            
-            ActivateCustomer();
-            
-        }
 
-        private void ActivateCustomer()
+        private void ActivateCustomer(string email)
         {
-            string emailAddress = "";
+           
 
 
             try
@@ -38,15 +34,17 @@ namespace WhiteElephantWebsite
                         ParameterName = "@Email",
                         SqlDbType = SqlDbType.NVarChar,
                         Size = 50,
-                        Value = emailAddress
+                        Value = email
                     },
                 };
 
                 DBHelper.Insert("ActivateCustomer", prms.ToArray());
-            }
-            catch
-            {
 
+                lblConfirmEmail.Text = "Account activated";
+            }
+            catch (Exception ex)
+            {
+                lblConfirmEmail.Text = ex.Message;
             }
 
 

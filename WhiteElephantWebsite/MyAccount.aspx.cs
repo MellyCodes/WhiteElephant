@@ -71,6 +71,8 @@ namespace WhiteElephantWebsite
             };
 
             DBHelper.DataBinding(this.detUser, "SelectCustomers", new SqlParameter[] { userPrm });
+
+            lblConfirmationEmailSent.Text = "An email has been sent to activate your account";
         }
         
 

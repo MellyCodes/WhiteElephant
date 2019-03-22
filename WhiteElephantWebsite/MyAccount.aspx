@@ -39,6 +39,7 @@
      <div id="notLoggedIn" runat="server" visible="false">
         You are not logged in. <a href="Login.aspx?returnurl=MyAccount.aspx">Login</a> or <a href="AccountCreation.aspx?returnurl=MyAccount.aspx">create a new account</a> to view and manage your account.
     </div>
+    <asp:Label ID="lblConfirmationEmailSent" runat="server" Text=""></asp:Label>
     <asp:DetailsView ID="detUser" runat="server" Height="50px" Width="483px" AutoGenerateRows="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
         OnModeChanging="detUser_ModeChanging" OnItemUpdating="detUser_ItemUpdating">
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

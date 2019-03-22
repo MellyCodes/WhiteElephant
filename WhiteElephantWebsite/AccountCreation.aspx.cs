@@ -83,7 +83,9 @@ namespace WhiteElephantWebsite
                     {
                         Session["authenticated"] = true;
                         Session["authenticatedUser"] = emailAddress;
-                        SendEmail();
+
+                        SendEmail(emailAddress);
+
                         if (Request.QueryString["returnurl"] != null)
                             Response.Redirect($"~/{Request.QueryString["returnurl"]}");
                         else
@@ -202,7 +204,7 @@ namespace WhiteElephantWebsite
 
 
 
-        private void SendEmail()
+        private void SendEmail(string email)
         {
             try
             {
@@ -216,13 +218,12 @@ namespace WhiteElephantWebsite
                 mail.To.Add(Common.GetAuthenticatedUser(Session));
 
                 //set the content
-                //mail.Subject = $"White Elephant Order Confirmation No: {orderNumber.ToString()}";
                 mail.Subject = $"Welcome!";
 
                 mail.Body = $"{html}Welcome to White Elephant Goods " +
                     $"Please confirm your email by clicking the link below.<br />" +
                     $"<br />" +
-                    $"<a href='~/ConfirmEmail.aspx'>Confirm Email</a>" +
+                    $"<a href=\"http://{Request.Url.Host}:{Request.Url.Port}/ConfirmEmail.aspx?email={email}\">Confirm Email</a>" +
                     $"</body>" +
                     $"</html>";
 
