@@ -78,7 +78,7 @@ namespace WhiteElephantWebsite
         protected void btnUpdateCart_Click(object sender, EventArgs e)
         {
             string CartUId = Common.GetCartId(Request, Response);
-
+            
             //One form of saving changes. One item at a time when there is a change
             foreach (GridViewRow row in this.grdCart.Rows)
             {
@@ -98,12 +98,26 @@ namespace WhiteElephantWebsite
                 }
             }
 
+            List<SqlParameter> prms = new List<SqlParameter>()
+            {
+                new SqlParameter()
+                {
+                    ParameterName = "@CartUId",
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 20,
+                    Value = CartUId
+                },
+                };
+
+
+            DBHelper.NonQuery("ClearCart", prms.ToArray());
+            grdCart.DataBind();
+
             GetCart();
             GetCartTotal();
 
             //Update the MasterPage label
-            string cartId = Common.GetCartId(Request, Response);
-            int count = Common.GetCartCount(cartId);
+            int count = Common.GetCartCount(CartUId);
             Label lblCartItemsCount = (Label)this.Page.Master.FindControl("lblCartItemsCount");
 
             if (lblCartItemsCount != null)
@@ -138,7 +152,9 @@ namespace WhiteElephantWebsite
                 Value = qty
             });
 
-            DBHelper.NonQuery("UpdateCart", prms.ToArray());            
+            DBHelper.NonQuery("UpdateCart", prms.ToArray());
+
+
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
