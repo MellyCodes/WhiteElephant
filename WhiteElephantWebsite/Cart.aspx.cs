@@ -97,20 +97,7 @@ namespace WhiteElephantWebsite
                         UpdateCartItem(CartUId, productId, qty);
                 }
             }
-
-            List<SqlParameter> prms = new List<SqlParameter>()
-            {
-                new SqlParameter()
-                {
-                    ParameterName = "@CartUId",
-                    SqlDbType = SqlDbType.NVarChar,
-                    Size = 20,
-                    Value = CartUId
-                },
-                };
-
-
-            DBHelper.NonQuery("ClearCart", prms.ToArray());
+            
             grdCart.DataBind();
 
             GetCart();
