@@ -45,6 +45,11 @@ namespace WhiteElephantWebsite.admin
         private string sourcePath;
         private string destinationPath;
 
+        /// <summary>
+        /// On page load, calls LoadFilesFromTempDir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -56,6 +61,9 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// Loads images from temp images folder
+        /// </summary>
         private void LoadFilesFromTempDir() { 
 
             string[] filePaths = Directory.GetFiles(Server.MapPath("~/tempimages"));
@@ -79,7 +87,11 @@ namespace WhiteElephantWebsite.admin
         }
 
 
-
+        /// <summary>
+        /// Move files from temp images folder to approved images folder on button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnMove_Click(object sender, EventArgs e)
         {
             lblMessage.Text = "";
@@ -96,6 +108,11 @@ namespace WhiteElephantWebsite.admin
             LoadFilesFromTempDir();
         }
 
+        /// <summary>
+        /// Upload image to be approved by admin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnUpload_Click(object sender, EventArgs e)
         {
 
@@ -150,12 +167,22 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// Show image selected from dropdown
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlImages_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.sourcePath = $"~/tempimages/{this.ddlImages.SelectedValue.ToString()}";
             imgImageUpload.ImageUrl = sourcePath;
         }
 
+        /// <summary>
+        /// Delete image from temp images folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnDeleteImage_Click(object sender, EventArgs e)
         {
             string file_name = ddlImages.SelectedItem.Text;

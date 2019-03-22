@@ -39,6 +39,11 @@ namespace WhiteElephantWebsite.admin
 {
     public partial class CategoryMaintenance : AdminPage
     {
+        /// <summary>
+        /// Page load calls LoadCategories
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             base.Page_Load(sender, e);
@@ -49,7 +54,9 @@ namespace WhiteElephantWebsite.admin
                 LoadCategoriesGridView();
             }
         }
-
+        /// <summary>
+        /// Binds categories to categories grid view
+        /// </summary>
         private void LoadCategoriesGridView()
         {
             DBHelper.DataBindingWithPaging(this.grdCategories, "SelectCategories"); // Need to make Sproc
@@ -58,6 +65,11 @@ namespace WhiteElephantWebsite.admin
 
         }
 
+        /// <summary>
+        /// if the command name is btnNew, add new category and reload categories into gridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "btnNew")
@@ -69,6 +81,11 @@ namespace WhiteElephantWebsite.admin
 
         }
 
+        /// <summary>
+        /// Delete category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = "";
@@ -76,7 +93,7 @@ namespace WhiteElephantWebsite.admin
             int categoryId = Convert.ToInt32(this.grdCategories.DataKeys[e.RowIndex].Values[0]);
             SqlParameter prmCategoryId = new SqlParameter() { ParameterName = "@CategoryId", SqlDbType = SqlDbType.Int, Value = categoryId };
 
-            // TODO: Need to check if product exists in category before deleteing it
+            
 
             try
             {
@@ -90,6 +107,11 @@ namespace WhiteElephantWebsite.admin
             LoadCategoriesGridView();
         }
 
+        /// <summary>
+        /// update category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             lblError.Text = "";
@@ -113,18 +135,7 @@ namespace WhiteElephantWebsite.admin
 
 
                 prms.Add(DBHelper.SetCategoryIdParam(categoryId));
-
-                /*
-                 *
-                 * prms.Add(DBHelper.SetCategoryIdParam(categoryId));
-
-                DBHelper.NonQuery("UpdateProduct", prms.ToArray());
-
-                lblMessage.Text = "Product was updated";
-                 */
-
-
-
+                
                 DBHelper.NonQuery("UpdateCategory", prms.ToArray());
 
                 lblMessage.Text = "Category was updated.";
@@ -137,6 +148,11 @@ namespace WhiteElephantWebsite.admin
             LoadCategoriesGridView();
         }
 
+        /// <summary>
+        /// Edit category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdCategories.EditIndex = e.NewEditIndex;
@@ -148,18 +164,31 @@ namespace WhiteElephantWebsite.admin
             //SqlParameter prmCategoryId = new SqlParameter() { ParameterName = "@CategoryId", SqlDbType = SqlDbType.Int, Value = categoryId };
         }
 
+        /// <summary>
+        /// Cancel edit of category
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             grdCategories.EditIndex = -1;
             LoadCategoriesGridView();
         }
 
+        /// <summary>
+        /// page index changing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCategories_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdCategories.PageIndex = e.NewPageIndex;
             LoadCategoriesGridView();
         }
 
+        /// <summary>
+        /// Add new category
+        /// </summary>
         private void AddNewCategory()
         {
             List<SqlParameter> prms = new List<SqlParameter>();

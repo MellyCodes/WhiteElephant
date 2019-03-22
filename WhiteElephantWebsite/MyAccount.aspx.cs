@@ -39,6 +39,11 @@ namespace WhiteElephantWebsite
 {
     public partial class MyAccount : System.Web.UI.Page
     {
+        /// <summary>
+        /// toggle notLoggedIn based on authentication - load user details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -59,6 +64,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Load current user's details
+        /// </summary>
         private void LoadUserDetails()
         {
             string user = Common.GetAuthenticatedUser(Session);
@@ -75,7 +83,11 @@ namespace WhiteElephantWebsite
             lblConfirmationEmailSent.Text = "An email has been sent to activate your account";
         }
         
-
+        /// <summary>
+        /// toggle view mode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void detUser_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
             if (e.NewMode == DetailsViewMode.Edit)
@@ -94,6 +106,11 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Update item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void detUser_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
         {
 

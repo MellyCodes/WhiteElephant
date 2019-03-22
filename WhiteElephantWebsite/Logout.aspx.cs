@@ -37,6 +37,11 @@ namespace WhiteElephantWebsite
 {
     public partial class Logout : System.Web.UI.Page
     {
+        /// <summary>
+        /// Log user out
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["authenticated"] = null;

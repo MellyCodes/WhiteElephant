@@ -44,6 +44,11 @@ namespace WhiteElephantWebsite
 
         string[] removedSearchWords = { "the", "at", "a", "and", "or", "this", "is" };
 
+        /// <summary>
+        /// redirect to product searched
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             //build my full query string for search
@@ -52,6 +57,10 @@ namespace WhiteElephantWebsite
             Response.Redirect($"~/Products.aspx{queryString}");
         }
 
+        /// <summary>
+        /// build query string
+        /// </summary>
+        /// <returns></returns>
         private string QueryStringBuilder()
         {
             string queryStringBuild = "?";
@@ -68,6 +77,10 @@ namespace WhiteElephantWebsite
             return queryStringBuild;
         }
 
+        /// <summary>
+        /// return filtered search words
+        /// </summary>
+        /// <returns></returns>
         private string[] FilteredSearchWords()
         {
             string[] words = this.txtSearch.Text.Split(' ');

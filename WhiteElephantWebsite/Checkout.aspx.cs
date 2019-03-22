@@ -44,7 +44,11 @@ namespace WhiteElephantWebsite
 
     {
 
-
+        /// <summary>
+        /// set min and max values for calendar 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_PreRender(object sender, EventArgs e)
         {
             DateTime dteMin = DateTime.Today;
@@ -53,7 +57,12 @@ namespace WhiteElephantWebsite
             rngMydate.MinimumValue = dteMin.ToShortDateString();
             rngMydate.MaximumValue = dteMax.ToShortDateString();
         }
-
+        /// <summary>
+        /// 
+        /// toggle visibility - get cart and total
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -96,6 +105,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Load the current users details and bind to detUser
+        /// </summary>
         private void LoadUserDetails()
         {
             string user = Common.GetAuthenticatedUser(Session);
@@ -110,16 +122,31 @@ namespace WhiteElephantWebsite
             DBHelper.DataBinding(this.detUser, "SelectCustomers", new SqlParameter[] { userPrm });
         }
 
+        /// <summary>
+        /// redirect to products page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Products.aspx");
         }
 
+        /// <summary>
+        /// Update cart - redirect to cart page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnUpdateMyCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Cart.aspx");
         }
 
+        /// <summary>
+        /// Submit order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSubmitOrder_Click(object sender, EventArgs e)
         {
             lblError.Text = "";

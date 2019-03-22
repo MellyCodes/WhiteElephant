@@ -11,6 +11,11 @@ namespace WhiteElephantWebsite
 {
     public partial class ConfirmEmail : System.Web.UI.Page
     {
+        /// <summary>
+        /// activate customer with given email
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             string email = Request.QueryString["email"];
@@ -18,12 +23,12 @@ namespace WhiteElephantWebsite
 
         }
 
-
+        /// <summary>
+        /// Account activation
+        /// </summary>
+        /// <param name="email"></param>
         private void ActivateCustomer(string email)
         {
-           
-
-
             try
             {
                 List<SqlParameter> prms = new List<SqlParameter>()
@@ -47,10 +52,7 @@ namespace WhiteElephantWebsite
                 lblConfirmEmail.Text = ex.Message;
             }
 
-
-
- 
-            //return email;
+            
         }
     }
 }

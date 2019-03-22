@@ -49,6 +49,11 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Account creation button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
             this.lblError.Text = "";
@@ -109,6 +114,19 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Create new account
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="emailAddress"></param>
+        /// <param name="password"></param>
+        /// <param name="street"></param>
+        /// <param name="city"></param>
+        /// <param name="province"></param>
+        /// <param name="postalCode"></param>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         private int CreateAccount
         (
             string firstName,
@@ -203,7 +221,10 @@ namespace WhiteElephantWebsite
         }
 
 
-
+        /// <summary>
+        /// Send confirmation email
+        /// </summary>
+        /// <param name="email"></param>
         private void SendEmail(string email)
         {
             try

@@ -43,11 +43,14 @@ namespace WhiteElephantWebsite
         {
             if (!IsPostBack)
             {
-
-
             }
         }
 
+        /// <summary>
+        /// authenticate user.  If authenticated send back to previous page - else return them to homepage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
             e.Authenticated = false;
@@ -58,7 +61,6 @@ namespace WhiteElephantWebsite
 
             if (e.Authenticated)
             {
-                //FIX THIS
                 if (Request.QueryString["returnurl"] != null)
                     Response.Redirect($"~/{Request.QueryString["returnurl"]}");
                 else
@@ -66,6 +68,12 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Authenticate user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private bool AuthenticateUser(string userName, string password)
         {
             bool result = false;

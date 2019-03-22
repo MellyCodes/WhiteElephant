@@ -11,6 +11,11 @@ namespace WhiteElephantWebsite.admin
 {
     public partial class ManageCustomerAccount : System.Web.UI.Page
     {
+        /// <summary>
+        /// Calls LoadCustomersGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,18 +25,31 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// bind customers to grid view
+        /// </summary>
         private void LoadCustomersGridView()
         {
             DBHelper.DataBindingWithPaging(this.grdCustomers, "SelectCustomers", null);
             
         }
 
+        /// <summary>
+        /// for paging - reload customers into grid view on next page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdCustomer_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdCustomers.PageIndex = e.NewPageIndex;
             LoadCustomersGridView();
         }
 
+        /// <summary>
+        /// archive user if box is ticked.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void UpdateArchive(object sender, GridViewDeleteEventArgs e)
         {
             

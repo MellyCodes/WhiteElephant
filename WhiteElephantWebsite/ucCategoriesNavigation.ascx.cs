@@ -37,6 +37,11 @@ namespace WhiteElephantWebsite
 {
     public partial class ucCategoriesNavigation : System.Web.UI.UserControl
     {
+        /// <summary>
+        /// Bind categories to detail view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -42,6 +42,11 @@ namespace WhiteElephantWebsite
 
         public bool Featured { get; set; }
 
+        /// <summary>
+        /// page load event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -105,6 +110,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Search for a product
+        /// </summary>
         private void ProductSearch()
         {
             List<string> searchKeys = Request.QueryString.AllKeys.Where(q => q.Contains("word")).ToList();
@@ -131,11 +139,19 @@ namespace WhiteElephantWebsite
             DBHelper.DataBinding(this.rptProducts, "SearchProducts", prms.ToArray());
         }
 
+        /// <summary>
+        /// set error label
+        /// </summary>
         private void ProductCountMessage()
         {
             this.lblError.Text = this.rptProducts.Items.Count == 0 ? "No products found" : "";
         }
 
+        /// <summary>
+        /// helper method for category id param
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         private SqlParameter CategoryParamHelper(int categoryId)
         {
             return new SqlParameter()
@@ -145,7 +161,11 @@ namespace WhiteElephantWebsite
                 Value = categoryId
             };
         }
-
+        /// <summary>
+        /// Helper method for product id param
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
         private SqlParameter ProductParamHelper(int productId)
         {
             return new SqlParameter()
@@ -156,6 +176,10 @@ namespace WhiteElephantWebsite
             };
         }
 
+        /// <summary>
+        /// Load products by category
+        /// </summary>
+        /// <param name="categoryId"></param>
         private void LoadProductsByCategory(int categoryId)
         {
             List<SqlParameter> prms = new List<SqlParameter>();
@@ -167,6 +191,10 @@ namespace WhiteElephantWebsite
             LoadProducts(prms);
         }
 
+        /// <summary>
+        /// Load a products details
+        /// </summary>
+        /// <param name="id"></param>
         private void LoadProductDetails(int id)
         {
             List<SqlParameter> prms = new List<SqlParameter>();
@@ -178,6 +206,9 @@ namespace WhiteElephantWebsite
             LoadProducts(prms);
         }
 
+        /// <summary>
+        /// Load featured products
+        /// </summary>
         private void LoadFeaturedProducts()
         {
             List<SqlParameter> prms = new List<SqlParameter>();
@@ -191,6 +222,10 @@ namespace WhiteElephantWebsite
             LoadProducts(prms);
         }
 
+        /// <summary>
+        /// Load all products
+        /// </summary>
+        /// <param name="prms"></param>
         private void LoadProducts(List<SqlParameter> prms = null)
         {
             if (prms == null)

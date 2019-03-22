@@ -44,6 +44,11 @@ namespace WhiteElephantWebsite.admin
 
         }
 
+        /// <summary>
+        /// check if user is authenticated and redirect them to previous page if so, or else redirect to admin dashboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
             e.Authenticated = false;
@@ -61,6 +66,12 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// if credentials match admin creds, authenticate session
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private bool AuthenticateAdmin(string userName, string password)
         {
             bool result = false;

@@ -39,6 +39,12 @@ namespace WhiteElephantWebsite
 {
     public static class Common
     {
+        /// <summary>
+        /// Get cart UID
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public static string GetCartId(HttpRequest request, HttpResponse response)
         {
             //Get the Cart Guid from the Cookie or Make a new one
@@ -60,6 +66,11 @@ namespace WhiteElephantWebsite
             return CartUId;
         }
 
+        /// <summary>
+        /// Get count of products in cart
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <returns></returns>
         public static int GetCartCount(string cartId)
         {
             string CartUId = cartId;
@@ -79,16 +90,31 @@ namespace WhiteElephantWebsite
             return count;
         }
 
+        /// <summary>
+        /// Check if user is authenticated and they are not an admin
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public static Boolean IsUserAuthenticated(HttpSessionState session)
         {
             return session["authenticated"] != null && session["authenticatedUser"] != null && session["admin"] == null;
         }
+        /// <summary>
+        /// check if user is authenticated and they are an admin
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
 
         public static Boolean IsAdminAuthenticated(HttpSessionState session)
         {
             return session["authenticated"] != null && session["authenticatedUser"] != null && session["admin"] != null;
         }
 
+        /// <summary>
+        /// return the authenticated user
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public static string GetAuthenticatedUser(HttpSessionState session)
         {
             if (IsUserAuthenticated(session))
@@ -97,6 +123,12 @@ namespace WhiteElephantWebsite
                 return "";
         }
 
+        /// <summary>
+        /// Get cart
+        /// </summary>
+        /// <param name="ctrl"></param>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
         public static void GetCart(Control ctrl, HttpRequest request, HttpResponse response)
         {
             string CartUId = Common.GetCartId(request, response);
@@ -113,6 +145,12 @@ namespace WhiteElephantWebsite
             DBHelper.DataBinding(ctrl, "SelectCart", prms.ToArray());
         }
 
+        /// <summary>
+        /// Get cart total amount and tax
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public static decimal GetCartTotal(HttpRequest request, HttpResponse response)
         {
             string CartUId = Common.GetCartId(request, response);

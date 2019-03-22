@@ -39,6 +39,11 @@ namespace WhiteElephantWebsite.admin
 {
     public partial class ProductMaintenance : AdminPage
     {
+        /// <summary>
+        /// on page load, calls LoadProductsGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             base.Page_Load(sender, e);
@@ -51,6 +56,9 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// bind products for maintenance into grid view
+        /// </summary>
         private void LoadProductsGridView()
         {
             DBHelper.DataBindingWithPaging(this.grdProducts, "SelectProductMaintenance");
@@ -60,6 +68,11 @@ namespace WhiteElephantWebsite.admin
 
         }
 
+        /// <summary>
+        /// if command name is btnNew , add new product and reload products into grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProducts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "btnNew")
@@ -71,6 +84,11 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// Delete product
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProducts_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblMessage.Text = "";
@@ -91,6 +109,11 @@ namespace WhiteElephantWebsite.admin
             LoadProductsGridView();
         }
 
+        /// <summary>
+        /// Update product
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProducts_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             lblMessage.Text = "";
@@ -160,6 +183,11 @@ namespace WhiteElephantWebsite.admin
 
         }
 
+        /// <summary>
+        /// Edit product
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProducts_RowEditing(object sender, GridViewEditEventArgs e)
         {
             grdProducts.EditIndex = e.NewEditIndex;
@@ -179,6 +207,10 @@ namespace WhiteElephantWebsite.admin
             }
         }
 
+        /// <summary>
+        /// bind categories into dropdown
+        /// </summary>
+        /// <param name="ddlCategory"></param>
         private void BindCategoryDropdownList(DropDownList ddlCategory)
         {
             ddlCategory.DataValueField = "id";
@@ -186,6 +218,11 @@ namespace WhiteElephantWebsite.admin
             DBHelper.DataBinding(ddlCategory, "SelectCategories");
             ddlCategory.Items.Insert(0, new ListItem("--Select Category--"));
         }
+        /// <summary>
+        /// cancel editing of product
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         protected void grdProducts_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
@@ -193,12 +230,20 @@ namespace WhiteElephantWebsite.admin
             LoadProductsGridView();
         }
 
+        /// <summary>
+        /// on page index change, reload products into grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdProducts.PageIndex = e.NewPageIndex;
             LoadProductsGridView();
         }
 
+        /// <summary>
+        /// Add new product
+        /// </summary>
         private void AddNewProduct()
         {
             List<SqlParameter> prms = new List<SqlParameter>();

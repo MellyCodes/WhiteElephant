@@ -39,6 +39,11 @@ namespace WhiteElephantWebsite
 {
     public partial class My : System.Web.UI.MasterPage
     {
+        /// <summary>
+        /// set labels and hyperlink texts
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -67,6 +72,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Get the cart count and update label
+        /// </summary>
         private void GetCartCount()
         {
             string cartId = Common.GetCartId(Request, Response);

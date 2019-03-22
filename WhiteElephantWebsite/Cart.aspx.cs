@@ -39,6 +39,11 @@ namespace WhiteElephantWebsite
 {
     public partial class Cart : System.Web.UI.Page
     {
+        /// <summary>
+        /// On page load, get cart and total
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -48,6 +53,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// get user's cart - if empty, show no items in cart and set labels and buttons visibility to false
+        /// </summary>
         private void GetCart()
         {
             Common.GetCart(this.grdCart, Request, Response);
@@ -64,6 +72,9 @@ namespace WhiteElephantWebsite
             }
         }
 
+        /// <summary>
+        /// Cart total with tax
+        /// </summary>
         private void GetCartTotal()
         {
             this.lblCartTotal.Text = Common.GetCartTotal(Request, Response).ToString("c2");
@@ -75,8 +86,14 @@ namespace WhiteElephantWebsite
             this.lblCartTax.Text = temp.ToString("c2");
         }
 
+        /// <summary>
+        /// Update cart and rebind
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnUpdateCart_Click(object sender, EventArgs e)
         {
+
             string CartUId = Common.GetCartId(Request, Response);
             
             //One form of saving changes. One item at a time when there is a change
@@ -111,11 +128,22 @@ namespace WhiteElephantWebsite
                 lblCartItemsCount.Text = count == 1 ? $"{count} item in cart" : count > 1 ? $"{count} items in cart" : "";
         }
 
+        /// <summary>
+        /// Go back to products page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Products.aspx");
         }
 
+        /// <summary>
+        /// Update a cart item
+        /// </summary>
+        /// <param name="CartUId"></param>
+        /// <param name="productId"></param>
+        /// <param name="qty"></param>
         private void UpdateCartItem(string CartUId, int productId, int qty)
         {
             List<SqlParameter> prms = new List<SqlParameter>();
@@ -144,6 +172,11 @@ namespace WhiteElephantWebsite
 
         }
 
+        /// <summary>
+        /// Redirect to checkout page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Checkout.aspx");
