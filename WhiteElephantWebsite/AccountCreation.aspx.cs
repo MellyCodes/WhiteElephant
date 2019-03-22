@@ -72,8 +72,6 @@ namespace WhiteElephantWebsite
                     string postalCode = this.txtPostalCode.Text.Trim();
                     string phone = this.txtPhone.Text.Trim();
 
-                    // Call SendEmail();
-                    
 
                     if (CreateAccount(
                         firstName,
@@ -101,7 +99,7 @@ namespace WhiteElephantWebsite
                         this.lblError.Text = "The account was not created";
                     }
 
-                    
+
                 }
             }
             catch (SqlException ex)
@@ -262,9 +260,10 @@ namespace WhiteElephantWebsite
                 smtp.PickupDirectoryLocation = @"C:\MyASPNETConfirmationEmails";
                 smtp.Send(mail);
             }
-            catch
+            catch (Exception ex)
             {
                 //Log or take some action
+                lblError.Text = ex.Message;
             }
         }
     }

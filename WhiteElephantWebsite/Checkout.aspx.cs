@@ -343,7 +343,7 @@ namespace WhiteElephantWebsite
                 case "Visa": //Visa
                     regCreditCardNumber.ValidationExpression = "^(4[0-9]{12}(?:[0-9]{3})?)";
                     regCreditCardNumber.ErrorMessage = "Visa numbers must be either 13 or 16 digits beginning with 4";
-                    regCreditCardNumber.ToolTip = "Visa numbers must be either 13 or 16 digits begining with 4";
+                    regCreditCardNumber.ToolTip = "Visa numbers must be either 13 or 16 digits beginning with 4";
                     break;
                 case "Mastercard": //Mastercard
                     regCreditCardNumber.ValidationExpression = "^(5[1-5][0-9]{14})";

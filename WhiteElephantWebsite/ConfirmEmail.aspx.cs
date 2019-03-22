@@ -20,7 +20,6 @@ namespace WhiteElephantWebsite
         {
             string email = Request.QueryString["email"];
             ActivateCustomer(email);
-
         }
 
         /// <summary>
@@ -52,7 +51,7 @@ namespace WhiteElephantWebsite
                 lblConfirmEmail.Text = ex.Message;
             }
 
-            
+
         }
     }
 }
